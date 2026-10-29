@@ -1,6 +1,6 @@
 # Dr. Disha Jain Dental Clinic: landing page
 
-Static, single-page site for Google Ads. No build step. Files: `index.html`, `style.css`, `main.js`, `config.js`.
+Static, animated single-page site for Google Ads. No build step. Edit `config.js` for contact details, hero variants (`?t=rct|pain|whitening|crown|dentures|implants`) and prices (`showPrices`). Swap placeholders in `assets/` with real photos (same filenames or update `index.html`).
 
 ## Before launch
 1. Confirm phone/WhatsApp number in `config.js` (Practo lists two different numbers).
