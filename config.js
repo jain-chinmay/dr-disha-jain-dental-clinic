@@ -3,6 +3,7 @@ window.CLINIC = {
   name: "Dr. Disha Jain Dental Clinic",
   phone: "917317154359",      // TODO confirm (a second number, +91 11 4084 8830, appears online)
   whatsapp: "917317154359",
+  showBeforeAfter: true,      // set false (or replace assets/before.svg + after.svg with real, consented cases) before ads go live
   gaId: "",                   // e.g. "G-XXXXXXX" or "AW-XXXXXXX"; leave empty until the Ads account is ready
 
   // Flip to true to show "From ₹X" on the treatment cards once prices are agreed.

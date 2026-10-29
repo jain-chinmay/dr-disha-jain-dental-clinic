@@ -13,3 +13,14 @@ Static, animated single-page site for Google Ads. No build step. Edit `config.js
 Any static host works. GitHub Pages: Settings → Pages → deploy from `main` / root.
 
 See `docs/` for business research, competitor analysis and the layout sketch.
+
+## Config flags (`config.js`)
+- `showPrices` + `prices`: show "From ₹X" on treatment cards.
+- `showBeforeAfter`: before/after slider. Currently ON with example images and an "Example image" badge. Replace `assets/before.svg` / `assets/after.svg` with real, consented cases, or set to `false`, before ads go live (dental advertising rules may restrict before/after).
+- `gaId`: Google tag ID for call / WhatsApp / form conversion events.
+
+## Launch checklist
+1. Real photos in `assets/` (doctor, clinic x3, logo) and real reviews.
+2. Confirm phone, address and hours; confirm "13+ years", "Open Sundays", "₹400".
+3. Decide on before/after (see above).
+4. Add `gaId`; check Dental Council / Google Ads healthcare policies.

@@ -16,6 +16,8 @@
 </script>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sp" viewBox="0 0 24 24"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></symbol></svg>
 <header class="top" id="top">
   <div class="wrap bar">
     <a class="brand" href="#top"><img src="assets/logo.svg" width="36" height="36" alt=""><span>Dr. Disha Jain <em>Dental Clinic</em></span></a>
@@ -42,10 +44,25 @@
       </ul>
     </div>
     <div class="hero-media">
-      <div class="photo-frame" data-speed="0.08"><img src="assets/doctor.svg" width="800" height="1000" alt="Dr. Disha Jain"></div>
+      <div class="art" id="art">
+        <svg class="layer orb" data-speed="0.05" data-mobile data-depth="10" viewBox="0 0 480 480" aria-hidden="true"><defs><radialGradient id="o1" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#c9f2ec"/><stop offset="1" stop-color="#7fd0d4"/></radialGradient></defs><circle cx="240" cy="240" r="210" fill="url(#o1)"/></svg>
+        <svg class="layer rings" data-speed="-0.07" data-depth="-14" viewBox="0 0 480 480" aria-hidden="true"><circle cx="240" cy="240" r="232" fill="none" stroke="#0b3b44" stroke-opacity=".25" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/><circle cx="240" cy="240" r="176" fill="none" stroke="#0b3b44" stroke-opacity=".14" stroke-width="2"/></svg>
+        <svg class="layer smile" data-speed="0.12" data-depth="20" viewBox="0 0 480 480" aria-hidden="true"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#e2725b"/><stop offset="1" stop-color="#f3a38f"/></linearGradient></defs><path d="M120 408Q240 472 360 408" fill="none" stroke="url(#sg)" stroke-width="22" stroke-linecap="round"/></svg>
+        <div class="layer doc-circle" data-speed="0.04" data-mobile data-depth="6"><img src="assets/doctor.svg" width="800" height="1000" alt="Dr. Disha Jain"></div>
+        <svg class="spark s1" viewBox="0 0 24 24" aria-hidden="true"><use href="#sp"/></svg>
+        <svg class="spark s2" viewBox="0 0 24 24" aria-hidden="true"><use href="#sp"/></svg>
+        <svg class="spark s3" viewBox="0 0 24 24" aria-hidden="true"><use href="#sp"/></svg>
+      </div>
       <div class="float-card" data-speed="-0.06"><b>Explained first</b><span>Every option and cost, before treatment.</span></div>
     </div>
   </div>
+</section>
+
+<section class="bigtype" aria-label="Gentle. Clear. Caring."><p class="reveal" data-hx>Gentle. Clear. Caring.</p></section>
+
+<section class="marquee" aria-label="Highlights">
+  <ul class="marquee-track"><li>Gentle care</li><li>Explained first</li><li>Open Sundays</li><li>13+ years</li><li>Root canal</li><li>Crowns &amp; bridges</li><li>Whitening &amp; veneers</li><li>Dental implants</li></ul>
+  <ul class="marquee-track" aria-hidden="true"><li>Gentle care</li><li>Explained first</li><li>Open Sundays</li><li>13+ years</li><li>Root canal</li><li>Crowns &amp; bridges</li><li>Whitening &amp; veneers</li><li>Dental implants</li></ul>
 </section>
 
 <section class="proof">
@@ -72,6 +89,23 @@
   </div>
 </section>
 
+<div class="wave wave-sage" aria-hidden="true"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0 30C240 70 480-10 720 30S1200 70 1440 30V60H0z"/></svg></div>
+<section class="band ba-sec" id="results" data-flag="ba">
+  <div class="wrap two">
+    <div class="reveal">
+      <p class="eyebrow">Smile results</p>
+      <h2>See what careful dentistry can change.</h2>
+      <p>Drag the handle to compare. Real cases appear here once patients have agreed to share them.</p>
+    </div>
+    <div class="ba reveal" id="ba">
+      <img src="assets/before.svg" width="900" height="600" alt="Example before image" loading="lazy">
+      <div class="ba-after"><img src="assets/after.svg" width="900" height="600" alt="Example after image" loading="lazy"></div>
+      <span class="badge">Example image</span>
+      <div class="ba-handle" aria-hidden="true"><i></i></div>
+      <input type="range" id="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+    </div>
+  </div>
+</section>
 <section class="band approach">
   <div class="wrap two">
     <div class="reveal">
@@ -133,6 +167,10 @@
     <h2>Find us in Palam Vyapar Kendra.</h2>
     <address>Dr. Disha Jain Dental Clinic<br>C-73, First Floor, Gate No. 2,<br>Palam Vyapar Kendra, Palam Vihar,<br>Gurugram, Haryana</address>
     <p><b>Mon to Sat</b> 10 am to 2 pm, 5 pm to 8 pm<br><b>Sunday</b> 10 am to 2 pm</p>
+    <a class="map-card" href="https://www.google.com/maps/search/?api=1&query=Dr.+Disha+Jain+Dental+Clinic+Palam+Vihar+Gurugram" target="_blank" rel="noopener">
+      <svg viewBox="0 0 320 140" aria-hidden="true"><rect width="320" height="140" fill="#d3efeb"/><path d="M0 100L320 40M60 0l80 140M200 0l40 140M0 30l320 20" stroke="#fff" stroke-width="9" fill="none"/><path d="M0 100L320 40M60 0l80 140M200 0l40 140M0 30l320 20" stroke="#0b3b44" stroke-opacity=".12" stroke-width="1.5" fill="none"/><g class="pin"><circle cx="160" cy="70" r="18" fill="#cc5540" opacity=".25"><animate attributeName="r" values="12;26;12" dur="2.4s" repeatCount="indefinite"/></circle><path d="M160 92c-10-14-16-22-16-30a16 16 0 0132 0c0 8-6 16-16 30z" fill="#cc5540"/><circle cx="160" cy="62" r="6" fill="#fff"/></g></svg>
+      <span>Open in Google Maps</span>
+    </a>
     <div class="cta-row">
       <a class="btn" data-call href="tel:+917317154359">Call now</a>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Dr.+Disha+Jain+Dental+Clinic+Palam+Vihar+Gurugram" rel="noopener" target="_blank">Get directions</a>
