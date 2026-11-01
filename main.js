@@ -27,6 +27,12 @@
     a.addEventListener("click", function () { track("whatsapp_click"); });
   });
 
+  var mapUrl = c.mapsUrl || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(c.name + ", C-73 Palam Vyapar Kendra, Palam Vihar, Gurugram 9650647352");
+  d.querySelectorAll("[data-map]").forEach(function (a) {
+    a.href = mapUrl; a.target = "_blank"; a.rel = "noopener";
+    a.addEventListener("click", function () { track("map_click"); });
+  });
+
   // Ad-group variant: /?t=rct swaps the hero copy and highlights the matching card
   var t = new URLSearchParams(location.search).get("t");
   var v = c.variants[t] || c.variants["default"];
