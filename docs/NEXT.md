@@ -1,6 +1,6 @@
 # Hand-off notes (real assets added)
 
-**Done:** real logo, doctor photos (DSC00533/00534), clinic photos (00486, 00489, 00487, 00493, 00497, 00503) are in `assets/`. Two gallery photos show a child patient: get the parent's consent before launch. `og:image` is a relative path, so make it an absolute URL once the domain is known. `assets/logo-full.png` (full lockup) is unused so far.
+**Done:** real logo, doctor photos (DSC00533/00534), clinic photos (00486, 00489, 00487, 00493, 00497, 00503) are in `assets/`. Two gallery photos show a child patient: get the parent's consent before launch. `og:image` is a relative path, so make it an absolute URL once the domain is known. Logo is now a self-made tooth badge (`assets/logo.svg`); swap in the original if Dr. Jain has one.
 
 Source folder (do not modify): `E:\Misc\Personal\Moti Clinic`  (logos, clinic photos, doctor photos)
 

@@ -9,7 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap">
-<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dr. Disha Jain Dental Clinic | Dentist in Palam Vihar, Gurugram">
@@ -25,11 +26,17 @@
 <body>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sp" viewBox="0 0 24 24"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></symbol></svg>
+<div class="topbar"><div class="wrap">
+  <span>📍 Palam Vihar, Gurugram</span>
+  <span>Mon to Sat 10 am to 2 pm, 5 pm to 8 pm · Sun 10 am to 2 pm</span>
+  <span class="tb-links"><a data-call href="tel:+919650647352">+91 96506 47352</a><a data-wa href="#">WhatsApp</a></span>
+</div></div>
 <header class="top" id="top">
   <div class="wrap bar">
-    <a class="brand" href="#top"><img src="assets/logo-icon.png" width="36" height="36" alt=""><span>Dr. Disha Jain <em>Dental Clinic</em></span></a>
-    <nav aria-label="Primary"><a href="#treatments">Treatments</a><a href="#doctor">Doctor</a><a href="#visit">Visit</a></nav>
-    <a class="btn btn-sm" data-call href="tel:+919650647352">Call</a>
+    <a class="brand" href="#top"><img src="assets/logo.svg" width="40" height="40" alt=""><span>Dr. Disha Jain <em>Dental Clinic</em></span></a>
+    <nav aria-label="Primary"><a href="#treatments">Treatments</a><a href="#results">Results</a><a href="#doctor">Our doctor</a><a href="#reviews">Reviews</a><a href="#clinic">The clinic</a><a href="#faq">FAQ</a><a href="#visit">Contact</a></nav>
+    <a class="btn btn-sm bar-book" href="#lead">Book appointment</a>
+    <a class="btn btn-sm bar-call" data-call href="tel:+919650647352">Call</a>
   </div>
 </header>
 
@@ -145,7 +152,7 @@
   </div>
 </section>
 
-<section class="band">
+<section class="band" id="reviews">
   <div class="wrap">
     <p class="eyebrow">Patient words</p>
     <h2 class="reveal">What patients say.</h2>
@@ -158,7 +165,7 @@
   </div>
 </section>
 
-<section class="wrap section">
+<section class="wrap section" id="clinic">
   <p class="eyebrow">The clinic</p>
   <h2 class="reveal">A calm place to get your teeth fixed.</h2>
   <div class="gallery">
@@ -200,7 +207,7 @@
   </form>
 </section>
 
-<section class="band">
+<section class="band" id="faq">
   <div class="wrap narrow">
     <h2 class="reveal">Common questions</h2>
     <details><summary>Is root canal treatment painful?</summary><p>The tooth is numbed first, so it is usually similar to having a filling. Most people feel relief from the original pain afterwards.</p></details>
@@ -211,10 +218,26 @@
 </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <p>© <span id="yr"></span> Dr. Disha Jain Dental Clinic, Palam Vihar, Gurugram. Results vary from patient to patient. This website gives general information and does not replace a clinical examination.</p>
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#top"><img src="assets/logo.svg" width="44" height="44" alt=""><span>Dr. Disha Jain <em>Dental Clinic</em></span></a>
+      <p>Gentle, clearly explained dental care in Palam Vihar, Gurugram, with Dr. Disha Jain, BDS.</p>
+      <div class="cta-row"><a class="btn btn-sm" data-call href="tel:+919650647352">Call now</a><a class="btn btn-sm btn-ghost" data-wa href="#">WhatsApp</a></div>
+    </div>
+    <nav aria-label="Treatments"><h4>Treatments</h4><ul><li><a href="#treatments">Root canal (RCT)</a></li><li><a href="#treatments">Crowns &amp; bridges</a></li><li><a href="#treatments">Teeth whitening</a></li><li><a href="#treatments">Veneers &amp; smile design</a></li><li><a href="#treatments">Dental implants</a></li><li><a href="#treatments">Fillings</a></li><li><a href="#treatments">Extractions</a></li><li><a href="#treatments">Dentures</a></li></ul></nav>
+    <nav aria-label="Quick links"><h4>Quick links</h4><ul><li><a href="#results">Smile results</a></li><li><a href="#doctor">Our doctor</a></li><li><a href="#reviews">Patient reviews</a></li><li><a href="#clinic">The clinic</a></li><li><a href="#faq">FAQ</a></li><li><a href="#lead">Book an appointment</a></li></ul></nav>
+    <div><h4>Contact</h4>
+      <address>C-73, First Floor, Gate No. 2,<br>Palam Vyapar Kendra, Palam Vihar,<br>Gurugram, Haryana</address>
+      <p><a data-call href="tel:+919650647352">+91 96506 47352</a></p>
+      <p><b>Mon to Sat</b><br>10 am to 2 pm, 5 pm to 8 pm<br><b>Sunday</b> 10 am to 2 pm</p>
+      <p><a data-map href="#">Get directions on Google Maps</a></p>
+    </div>
   </div>
+  <div class="foot-bar"><div class="wrap">
+    <p>© <span id="yr"></span> Dr. Disha Jain Dental Clinic, Palam Vihar, Gurugram. All rights reserved.</p>
+    <p>Results vary from patient to patient. This website gives general information and does not replace a clinical examination.</p>
+  </div></div>
 </footer>
 
 <div class="sticky" id="sticky">
