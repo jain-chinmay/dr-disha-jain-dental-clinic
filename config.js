@@ -1,8 +1,8 @@
 // Single place for clinic details, treatments and prices. Confirm contact details with Dr. Jain before launch.
 window.CLINIC = {
   name: "Dr. Disha Jain Dental Clinic",
-  phone: "917317154359",      // TODO confirm (a second number, +91 11 4084 8830, appears online)
-  whatsapp: "917317154359",
+  phone: "919650647352",
+  whatsapp: "919650647352",
   showBeforeAfter: true,      // set false (or replace assets/before.svg + after.svg with real, consented cases) before ads go live
   gaId: "",                   // e.g. "G-XXXXXXX" or "AW-XXXXXXX"; leave empty until the Ads account is ready
 
