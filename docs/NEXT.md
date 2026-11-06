@@ -19,5 +19,6 @@ Source folder (do not modify): `E:\Misc\Personal\Moti Clinic`  (logos, clinic ph
 ## Multi-page site (built 2026-11)
 - `node build.js` regenerates all inner pages, the shared header/footer (also inside `index.html` between the HEADER/FOOTER markers), `sitemap.xml` and `robots.txt`. Treatment content is in `data/treatments.js`; info pages are in `build.js`.
 - 15 treatment pages + 3 hubs + about, clinic, reviews, faq, contact, privacy. No prices shown until confirmed.
-- Not built yet (needs input): kids' dentistry, braces, aligners (confirm she offers them), results page (consented photos), local-area pages (confirm areas), blog posts, real reviews quotes, doctor registration number.
+- Added after confirmation: kids dentistry, braces, clear aligners, dentist-in-palam-vihar, dentist-in-gurugram, 6 blog posts (`data/posts.js`, rendered by `build-extra.js`). `node check-links.js` verifies internal links.
+- Still pending: results page (consented photos), more area pages (confirm areas), price ranges, real review quotes, doctor registration number.
 - Theme is white and red with a liquid-glass header that collapses to a floating pill on scroll (`.top.compact` in `style.css`, toggled in `main.js`).

@@ -2,7 +2,8 @@
 // Static site generator: `node build.js` writes every inner page next to index.html and refreshes the shared header/footer in index.html.
 // No dependencies. Content lives in data/treatments.js; page copy for info pages is below.
 const fs = require("fs"), path = require("path");
-const T = require("./data/treatments.js");
+const T = require("./data/treatments.js").concat(require("./data/treatments-extra.js"));
+const POSTS = require("./data/posts.js");
 const SITE = "https://jain-chinmay.github.io/dr-disha-jain-dental-clinic/";
 const NAME = "Dr. Disha Jain Dental Clinic";
 const PHONE_TXT = "+91 96506 47352";
@@ -11,7 +12,7 @@ const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(
 const urlOf = t => t.slug + sufx + "/";
 const byGroup = g => T.filter(t => t.group === g);
 const GROUPS = [
-  ["restorative", "Restorative"], ["cosmetic", "Cosmetic"], ["implants", "Implants"], ["gum", "Gum care"]
+  ["restorative", "Restorative"], ["cosmetic", "Cosmetic"], ["implants", "Implants"], ["gum", "Gum care"], ["kids", "Kids"], ["ortho", "Braces and aligners"]
 ];
 
 // ---------- icons ----------
@@ -44,7 +45,7 @@ function header(b) {
     <a class="brand" href="${b || "./"}"><img src="${b}assets/logo.svg" width="40" height="40" alt=""><span>Dr. Disha Jain <em>Dental Clinic</em></span></a>
     <nav class="nav" id="nav" aria-label="Primary">
       <div class="has-mega"><a href="${b}treatments/">Treatments</a><div class="mega"><div class="wrap mega-in">${mega}<div class="mega-all"><a href="${b}treatments/">View all treatments →</a></div></div></div></div>
-      <a href="${b}about/">Our doctor</a><a href="${b}reviews/">Reviews</a><a href="${b}clinic/">The clinic</a><a href="${b}faq/">FAQ</a><a href="${b}contact/">Contact</a>
+      <a href="${b}about/">Our doctor</a><a href="${b}reviews/">Reviews</a><a href="${b}blog/">Blog</a><a href="${b}clinic/">The clinic</a><a href="${b}faq/">FAQ</a><a href="${b}contact/">Contact</a>
     </nav>
     <a class="btn btn-sm bar-book" href="#lead">Book appointment</a>
     <a class="btn btn-sm bar-call" data-call href="tel:+919650647352">Call</a>
@@ -64,7 +65,7 @@ function footer(b) {
       <div class="cta-row"><a class="btn btn-sm" data-call href="tel:+919650647352">Call now</a><a class="btn btn-sm btn-ghost" data-wa href="#">WhatsApp</a></div>
     </div>
     <nav aria-label="Treatments"><h4>Treatments</h4><ul>${T.slice(0, 8).map(t => `<li>${link(b, t)}</li>`).join("")}<li><a href="${b}treatments/">All treatments →</a></li></ul></nav>
-    <nav aria-label="Clinic"><h4>Clinic</h4><ul><li><a href="${b}about/">Our doctor</a></li><li><a href="${b}clinic/">The clinic</a></li><li><a href="${b}reviews/">Patient reviews</a></li><li><a href="${b}faq/">FAQ</a></li><li><a href="${b}contact/">Contact and booking</a></li><li><a href="${b}privacy/">Privacy</a></li></ul></nav>
+    <nav aria-label="Clinic"><h4>Clinic</h4><ul><li><a href="${b}about/">Our doctor</a></li><li><a href="${b}clinic/">The clinic</a></li><li><a href="${b}reviews/">Patient reviews</a></li><li><a href="${b}faq/">FAQ</a></li><li><a href="${b}blog/">Blog</a></li><li><a href="${b}dentist-in-palam-vihar/">Dentist in Palam Vihar</a></li><li><a href="${b}contact/">Contact and booking</a></li><li><a href="${b}privacy/">Privacy</a></li></ul></nav>
     <div><h4>Contact</h4>
       <address>C-73, First Floor, Gate No. 2,<br>Palam Vyapar Kendra, Palam Vihar,<br>Gurugram, Haryana</address>
       <p><a data-call href="tel:+919650647352">${PHONE_TXT}</a></p>
@@ -156,7 +157,7 @@ const heroCTA = `<div class="cta-row"><a class="btn" data-call href="tel:+919650
 const chips = `<ul class="chips"><li>BDS dentist</li><li>13+ years</li><li>₹400 consultation</li><li>Open Sunday mornings</li></ul>`;
 
 // ---------- treatment pages ----------
-const GROUPLABEL = { restorative: "Restorative dentistry", cosmetic: "Cosmetic dentistry", implants: "Dental implants", gum: "Gum care" };
+const GROUPLABEL = { restorative: "Restorative dentistry", cosmetic: "Cosmetic dentistry", implants: "Dental implants", gum: "Gum care", kids: "Kids' dentistry", ortho: "Braces and aligners" };
 const GROUPHUB = { restorative: "restorative-dentistry/", cosmetic: "cosmetic-dentistry/" };
 const urls = [""];
 
@@ -301,6 +302,8 @@ info("privacy/index.html", "Privacy", "How this website handles your information
 <p>If analytics are enabled on this site, they record anonymous usage such as pages viewed and button clicks, to help us improve the site. No personal health information is collected through the website.</p>
 <p>Messages you send us on WhatsApp or phone are used only to arrange and carry out your care. Questions about your information? Call us on ${PHONE_TXT}.</p>
 <p class="note">General dental information on this site is not a substitute for a clinical examination.</p></div></section>`);
+
+require("./build-extra.js")({ T, POSTS, page, urls, crumbs, crumbLD, faqLD, faqHTML, card, heroCTA, chips, bookBand, NAME, esc, urlOf });
 
 // ---------- refresh index.html header/footer ----------
 let idx = fs.readFileSync(path.join(__dirname, "index.html"), "utf8");
