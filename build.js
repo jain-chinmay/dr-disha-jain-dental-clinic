@@ -42,19 +42,15 @@ const icon = k => `<svg viewBox="0 0 48 48" aria-hidden="true">${ICON[k] || ICON
 const link = (b, t) => `<a href="${b}${urlOf(t)}">${esc(t.name)}</a>`;
 
 function header(b) {
-  const mega = GROUPS.map(([g, label]) => `<div><p class="h4">${label}</p>${byGroup(g).map(t => link(b, t)).join("")}</div>`).join("");
+  const mega = T.map(t => link(b, t)).join("");
   return `<!--HEADER-->
-<div class="topbar"><div class="wrap">
-  <span>📍 Palam Vihar, Gurugram</span>
-  <span>Mon to Sat 10 am to 2 pm, 5 pm to 8 pm · Sun 10 am to 2 pm</span>
-  <span class="tb-links"><a data-call href="tel:+919650647352">${PHONE_TXT}</a><a data-wa href="#">WhatsApp</a></span>
-</div></div>
 <header class="top" id="top">
   <div class="wrap bar">
     <a class="brand" href="${b || "./"}"><img src="${b}assets/logo.svg" width="40" height="40" alt=""><span>Dr. Disha Jain <em>Dental Clinic</em></span></a>
     <nav class="nav" id="nav" aria-label="Primary">
-      <div class="has-mega"><a href="${b}treatments/">Treatments</a><div class="mega"><div class="wrap mega-in">${mega}<div class="mega-all"><a href="${b}treatments/">View all treatments →</a></div></div></div></div>
-      <a href="${b}about/">Our doctor</a><a href="${b}reviews/">Reviews</a><a href="${b}blog/">Blog</a><a href="${b}clinic/">The clinic</a><a href="${b}faq/">FAQ</a><a href="${b}contact/">Contact</a>
+      <div class="has-mega"><a href="${b}treatments/">Treatments</a><div class="mega"><div class="mega-in"><div class="mega-list">${mega}</div><a class="mega-all" href="${b}treatments/">View all treatments →</a></div></div></div>
+      <a href="${b}about/">Our doctor</a><a href="${b}reviews/">Reviews</a><a href="${b}contact/">Contact</a>
+      <div class="nav-foot"><a class="btn" data-call href="tel:+919650647352">Call ${PHONE_TXT}</a><a class="btn btn-ghost" data-wa href="#">WhatsApp us</a><p>Mon to Sat 10 am to 2 pm, 5 pm to 8 pm<br>Sunday 10 am to 2 pm</p></div>
     </nav>
     <a class="btn btn-sm bar-book" href="#lead">Book appointment</a>
     <a class="btn btn-sm bar-call" data-call href="tel:+919650647352">Call</a>
@@ -143,7 +139,6 @@ ${ld}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="progress" id="progress" aria-hidden="true"></div>
 ${header(b)}
 <main id="main" tabindex="-1">
 ${body(b)}
@@ -171,7 +166,8 @@ const chips = `<ul class="chips"><li>BDS dentist</li><li>13+ years</li><li>₹40
 
 // ---------- hero photo, glance data, page sections ----------
 const PHOTOS = [["clinic-chair", "Treatment chair with overhead light and monitor"], ["clinic-treatment", "Dr. Disha Jain treating a young patient"], ["clinic-desk", "Consultation desk"], ["clinic-chair-2", "Dental chair and equipment"], ["clinic-cabinets", "Instrument and storage cabinets"], ["clinic-treatment-2", "Dr. Disha Jain at the chair during a check-up"]];
-const heroPhoto = (b, i) => { const [f, a] = PHOTOS[i % PHOTOS.length]; return `<div class="hero-photo"><img src="${b}assets/${f}.webp" srcset="${b}assets/${f}-480.webp 480w, ${b}assets/${f}.webp 900w" sizes="(max-width:820px) 100vw, 560px" width="900" height="600" alt="${a}" fetchpriority="high"><div class="hp-badge"><img src="${b}assets/doctor-1-480.webp" width="40" height="50" alt=""><span><b>Dr. Disha Jain, BDS</b>13+ years of experience</span></div></div>`; };
+const heroPhoto = (b, i) => { const [f, a] = PHOTOS[i % PHOTOS.length]; return `<div class="hero-photo"><img src="${b}assets/${f}.webp" srcset="${b}assets/${f}-480.webp 480w, ${b}assets/${f}.webp 900w" sizes="(max-width:820px) 100vw, 560px" width="900" height="600" alt="${a}" fetchpriority="high"></div>`; };
+const plainHero = (text) => `<section class="page-hero page-hero-sm"><div class="wrap">${text}</div></section>`;
 const heroSplit = (b, text, i) => `<section class="page-hero"><div class="wrap hero-split"><div class="hero-text">${text}</div>${heroPhoto(b, i)}</div></section>`;
 const GLANCE = {
   "root-canal-treatment": ["1 to 3 visits", "Local anaesthesia", "Keeps your own tooth"], "dental-fillings": ["Usually 1 visit", "Numbing if needed", "Stops decay spreading"],
@@ -206,42 +202,28 @@ T.forEach(t => {
     schema: [crumbLD(crumbLDItems), faqLD(t.faqs), { "@context": "https://schema.org", "@type": "MedicalWebPage", name: `${t.name} in Palam Vihar, Gurugram`, about: { "@type": "MedicalProcedure", name: t.name, description: t.short } }],
     body: b => `
 ${heroSplit(b, `${crumbs(b, crumbItems)}<p class="eyebrow">${GROUPLABEL[t.group]}</p><h1>${esc(t.name)} in Palam Vihar, Gurugram</h1><p class="lead">${esc(t.summary)}</p>${heroCTA}`, T.indexOf(t))}
-<div class="wrap"><ul class="glance">
-  <li><i>Visits</i><b>${GLANCE[t.slug][0]}</b></li><li><i>Comfort</i><b>${GLANCE[t.slug][1]}</b></li><li><i>Best for</i><b>${GLANCE[t.slug][2]}</b></li><li><i>Consultation</i><b>₹400</b></li>
-</ul></div>
-<div class="wrap article-grid">
+<div class="wrap article"><p class="glance-line">${GLANCE[t.slug][0]} · ${GLANCE[t.slug][1]} · ${GLANCE[t.slug][2]} · Consultation ₹400</p>
   <article class="prose">
-    <details class="toc-m"><summary>On this page</summary><ul>${tocLinks()}</ul></details>
     <h2 id="what">What is ${esc(t.name.toLowerCase())}?</h2>
     ${t.what.map(p => `<p>${esc(p)}</p>`).join("")}
     <h2 id="who">Who is it for?</h2>
     <ul class="ticks">${t.who.map(w => `<li>${esc(w)}</li>`).join("")}</ul>
     <h2 id="steps">What happens, step by step</h2>
     <ol class="numlist">${t.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>
-    <h2 id="benefits">Benefits</h2>
-    <div class="mini-cards">${t.benefits.map(([h, d]) => `<div><h3>${esc(h)}</h3><p>${esc(d)}</p></div>`).join("")}</div>
+    <details class="fold" id="benefits"><summary><h2>Benefits</h2></summary>
+    <div class="mini-cards">${t.benefits.map(([h, d]) => `<div><h3>${esc(h)}</h3><p>${esc(d)}</p></div>`).join("")}</div></details>
     <details class="fold" id="aftercare"><summary><h2>Aftercare</h2></summary>
     <ul class="ticks">${t.aftercare.map(w => `<li>${esc(w)}</li>`).join("")}</ul></details>
-    <details class="fold" id="cost" open><summary><h2>Cost of ${esc(t.name.toLowerCase())} in Gurugram</h2></summary>
+    <details class="fold" id="cost"><summary><h2>Cost of ${esc(t.name.toLowerCase())} in Gurugram</h2></summary>
     <p>The cost depends on your mouth, so we give you a clear figure only after examining you. What usually affects it:</p>
     <ul class="ticks">${t.cost.map(w => `<li>${esc(w)}</li>`).join("")}</ul>
     <p>Consultation is ₹400. If treatment is needed, we explain the options and the cost before we start, so there are no surprises.</p></details>
-    <div class="doc-card" id="why"><img src="${b}assets/doctor-1.webp" srcset="${b}assets/doctor-1-480.webp 480w, ${b}assets/doctor-1.webp 800w" sizes="(max-width:820px) 100vw, 560px" width="800" height="1000" alt="Dr. Disha Jain" loading="lazy"><div><p class="eyebrow">Your dentist</p><h2>Dr. Disha Jain, BDS</h2>
-      <p>13+ years of experience. Trained as a resident in Delhi government hospitals, where she treated a wide range of dental problems. Patients mention how patiently she explains things, so you understand your treatment before you agree to it.</p>
-      <p><a class="btn btn-sm btn-ghost" href="${b}about/">Meet Dr. Jain</a></p></div></div>
+    <div class="doc-card" id="why"><img src="${b}assets/doctor-1.webp" srcset="${b}assets/doctor-1-480.webp 480w, ${b}assets/doctor-1.webp 800w" sizes="150px" width="800" height="1000" alt="Dr. Disha Jain" loading="lazy"><div><h2>Dr. Disha Jain, BDS</h2>
+      <p>13+ years of experience. Trained in Delhi government hospitals. Patients mention how patiently she explains things, so you understand your treatment before you agree to it.</p>
+      <p><a href="${b}about/">Meet Dr. Jain →</a></p></div></div>
     <h2 id="faq">Frequently asked questions</h2>
     <div class="faq-list">${faqHTML(t.faqs)}</div>
   </article>
-  <aside class="side">
-    <div class="side-card">
-      <h3>Book ${esc(t.name.toLowerCase())}</h3>
-      <p>Consultation ₹400. We explain every option and cost first.</p>
-      <a class="btn" data-call href="tel:+919650647352">Call ${PHONE_TXT}</a>
-      <a class="btn btn-ghost" data-wa href="#">WhatsApp us</a>
-      <p class="note">Mon to Sat 10-2, 5-8 · Sun 10-2</p>
-    </div>
-    <nav class="side-card toc" aria-label="On this page"><h3>On this page</h3><ul class="side-links">${tocLinks()}</ul></nav>
-  </aside>
 </div>
 <section class="wrap section hub-group related"><h2 class="reveal">Related treatments</h2><div class="cards">${rel.map(r => card(b, r)).join("")}</div><p class="all-link"><a class="btn btn-ghost" href="${b}treatments/">All treatments</a></p></section>
 ${bookBand(t.name.includes("Root") ? "Root canal" : t.slug.includes("whitening") ? "Teeth whitening" : t.slug.includes("implant") ? "Dental implant" : t.slug.includes("denture") ? "Dentures" : t.group === "gum" ? "Cleaning / check-up" : t.group === "cosmetic" ? "Crown / bridge / veneers" : "Filling / extraction")}`
@@ -256,7 +238,7 @@ function hub({ file, title, h1, desc, lead, groups, eyebrow, crumbLabel }) {
     file, depth: 1, title: `${title} | ${NAME}`, desc,
     schema: [crumbLD([[crumbLabel, file.replace("index.html", "")]])],
     body: b => `
-${heroSplit(b, `${crumbs(b, [[crumbLabel, null]])}<p class="eyebrow">${eyebrow}</p><h1>${h1}</h1><p class="lead">${lead}</p>${heroCTA}${chips}`, hubIdx++)}
+${plainHero(`${crumbs(b, [[crumbLabel, null]])}<p class="eyebrow">${eyebrow}</p><h1>${h1}</h1><p class="lead">${lead}</p>`)}
 ${groups.map(([label, items]) => `<section class="wrap section hub-group"><h2 class="reveal">${label}</h2><div class="cards">${items.map(t => card(b, t)).join("")}</div></section>`).join("")}
 ${bookBand()}`
   });

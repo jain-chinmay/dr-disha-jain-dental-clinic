@@ -7,7 +7,7 @@ module.exports = function ({ T, POSTS, page, urls, crumbs, crumbLD, faqLD, faqHT
       desc: `Looking for a dentist in ${place}? Dr. Disha Jain offers root canal, crowns, implants, whitening, braces and more at Palam Vyapar Kendra, Palam Vihar. Call or WhatsApp to book.`,
       schema: [crumbLD([["Dentist in " + place, slug + "/"]]), faqLD(faqs)],
       body: b => `
-${heroSplit(b, `${crumbs(b, [["Dentist in " + place, null]])}<p class="eyebrow">Local dentist</p><h1>Dentist in ${place}</h1><p class="lead">${lead}</p>${heroCTA}${chips}`, slug.length)}
+<section class="page-hero page-hero-sm"><div class="wrap">${crumbs(b, [["Dentist in " + place, null]])}<p class="eyebrow">Local dentist</p><h1>Dentist in ${place}</h1><p class="lead">${lead}</p></div></section>
 <section class="wrap section"><div class="prose narrow"><h2>Care for the whole family</h2>${extra.map(p => `<p>${p}</p>`).join("")}</div></section>
 <section class="wrap section hub-group"><h2 class="reveal">Treatments we offer</h2><div class="cards">${T.map(t => card(b, t)).join("")}</div></section>
 <section class="band"><div class="wrap two"><div class="reveal prose"><h2>Find the clinic</h2><address>${NAME}<br>C-73, First Floor, Gate No. 2,<br>Palam Vyapar Kendra, Palam Vihar,<br>Gurugram, Haryana</address><p><b>Mon to Sat</b> 10 am to 2 pm, 5 pm to 8 pm<br><b>Sunday</b> 10 am to 2 pm</p><div class="cta-row"><a class="btn" data-map href="#">Get directions</a><a class="btn btn-ghost" data-call href="tel:+919650647352">Call us</a></div></div>

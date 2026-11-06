@@ -115,11 +115,23 @@
     Object.keys(map).forEach(function (id) { var el = d.getElementById(id); if (el) spy.observe(el); });
   }
 
+  // Mobile: Treatments row expands in place instead of navigating
+  var hmLink = hm && hm.querySelector(":scope > a");
+  if (hmLink) {
+    hmLink.setAttribute("aria-expanded", "false");
+    hmLink.addEventListener("click", function (e) {
+      if (!window.matchMedia("(max-width: 820px)").matches) return;
+      e.preventDefault();
+      hmLink.setAttribute("aria-expanded", hm.classList.toggle("sub-open"));
+    });
+  }
+
   // Mobile menu
   var mb = d.getElementById("menu-btn"), hd = d.querySelector(".top");
   if (mb) {
-    mb.addEventListener("click", function () { var o = hd.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
-    d.querySelectorAll("#nav a").forEach(function (a) { a.addEventListener("click", function () { hd.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); }); });
+    mb.addEventListener("click", function () { var o = hd.classList.toggle("open"); mb.setAttribute("aria-expanded", o); d.documentElement.classList.toggle("menu-open", o); });
+    d.addEventListener("keydown", function (e) { if (e.key === "Escape" && hd.classList.contains("open")) { hd.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); d.documentElement.classList.remove("menu-open"); } });
+    d.querySelectorAll("#nav a").forEach(function (a) { a.addEventListener("click", function () { if (a.parentNode === hm) return; hd.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); d.documentElement.classList.remove("menu-open"); }); });
   }
 
   // Scroll reveal (fade only when reduced motion is on; CSS drops the movement)
@@ -182,7 +194,6 @@
     top.classList.toggle("scrolled", y > 8);
     top.classList.toggle("compact", y > 90);
     sticky.classList.toggle("show", y > (hero ? hero.offsetHeight * 0.6 : 200));
-    prog.style.setProperty("--sp", max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
     if (!reduce) {
       if (y < h * 1.5) par.forEach(function (el) { el.style.transform = "translate3d(0," + (y * el.dataset.speed).toFixed(1) + "px,0)"; });
       if (big) { var br = big.getBoundingClientRect(); big.style.transform = "translate3d(" + (((br.top + br.height / 2) - h / 2) * -0.25).toFixed(1) + "px,0,0)"; }
