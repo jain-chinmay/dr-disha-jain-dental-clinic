@@ -85,6 +85,15 @@
   });
   var yr = d.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
 
+  // Desktop mega-menu: open on hover with a short close delay
+  var hm = d.querySelector('.has-mega');
+  if (hm) {
+    var closeT;
+    hm.addEventListener('mouseenter', function () { clearTimeout(closeT); hm.classList.add('open'); });
+    hm.addEventListener('mouseleave', function () { closeT = setTimeout(function () { hm.classList.remove('open'); }, 300); });
+    d.addEventListener('keydown', function (e) { if (e.key === 'Escape') hm.classList.remove('open'); });
+  }
+
   // Mobile menu
   var mb = d.getElementById("menu-btn"), hd = d.querySelector(".top");
   if (mb) {

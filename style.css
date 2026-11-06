@@ -338,3 +338,10 @@ body{background:#fff}
 .mega-in{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 @media(max-width:820px){.mega-in{display:block}}
 .mega{background:rgba(255,255,255,.96)}
+/* mega-menu: JS-driven open state with a short close delay so the cursor can cross the gap */
+.has-mega:hover .mega{display:none}
+.has-mega.open .mega,.has-mega:focus-within .mega{display:block}
+.has-mega.open>a{background:rgba(215,38,61,.1);color:var(--coral-d)}
+@media(max-width:820px){.has-mega:hover .mega,.has-mega .mega{display:block}}
+.nav>a,.has-mega>a{white-space:nowrap}
+@media(min-width:821px) and (max-width:1100px){.nav>a,.has-mega>a{padding:8px 8px;font-size:.84rem}.bar-book{padding-inline:14px;font-size:.88rem}.brand span{font-size:.92rem}}
