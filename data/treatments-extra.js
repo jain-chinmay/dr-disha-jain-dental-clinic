@@ -1,7 +1,7 @@
 // Added after confirmation that Dr. Jain offers these. Same schema as treatments.js.
 module.exports = [
 {
-  slug: "kids-dentistry", name: "Kids' dentistry", group: "kids", icon: "tooth",
+  slug: "kids-dentistry", name: "Kids' dentistry", group: "kids", icon: "kid",
   short: "Gentle check-ups and care that help children feel at ease.",
   summary: "Children's teeth need regular care and a calm first impression of the dentist. We take time with young patients, explain things simply and focus on prevention.",
   what: ["Baby teeth matter. They hold space for adult teeth, help children chew and speak, and decay in them can cause pain and infection. Early, regular visits catch problems while they are small.", "A good first experience also builds trust, so children grow up comfortable with dental care rather than afraid of it."],
@@ -14,7 +14,7 @@ module.exports = [
   related: ["dental-fillings", "scaling-and-polishing", "tooth-extraction"]
 },
 {
-  slug: "braces", name: "Braces", group: "ortho", icon: "bridge",
+  slug: "braces", name: "Braces", group: "ortho", icon: "braces",
   short: "Straighten crooked or crowded teeth for a healthier bite and smile.",
   summary: "Braces gently move teeth into better positions over time. They help with crowding, gaps and bite problems, and make teeth easier to clean.",
   what: ["Braces use brackets and wires that apply light, steady pressure to move teeth gradually. Metal braces are the most common; tooth-coloured ceramic braces are a less visible option.", "Treatment length varies from person to person, often one to two years. Dr. Jain will examine you, explain what is possible and the likely timeline before you decide."],
@@ -27,7 +27,7 @@ module.exports = [
   related: ["clear-aligners", "scaling-and-polishing", "smile-design"]
 },
 {
-  slug: "clear-aligners", name: "Clear aligners", group: "ortho", icon: "veneer",
+  slug: "clear-aligners", name: "Clear aligners", group: "ortho", icon: "tray",
   short: "Nearly invisible, removable trays that gradually straighten teeth.",
   summary: "Clear aligners straighten teeth with a series of removable, transparent trays. They suit many adults who want a discreet alternative to braces.",
   what: ["Each aligner is made to fit your teeth and is changed every couple of weeks, moving the teeth a little at a time. You wear them most of the day and take them out to eat and clean your teeth.", "Aligners work well for mild to moderate crowding and gaps, but not every case. Dr. Jain will tell you honestly whether aligners or braces will give a better result."],

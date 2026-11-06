@@ -83,7 +83,7 @@ module.exports = [
   related: ["wisdom-tooth-removal", "dental-implants", "dentures"]
 },
 {
-  slug: "wisdom-tooth-removal", name: "Wisdom tooth removal", group: "restorative", icon: "arrow",
+  slug: "wisdom-tooth-removal", name: "Wisdom tooth removal", group: "restorative", icon: "molar",
   short: "Careful removal of painful or impacted wisdom teeth.",
   summary: "Wisdom teeth often come in at an angle or get stuck, causing pain and swelling. We assess them carefully with an X-ray and remove them only when it is the right option.",
   what: ["Wisdom teeth are the last molars, usually appearing in the late teens or twenties. Many people do not have enough space for them.", "Impacted wisdom teeth can trap food, cause infection and decay in the tooth next to them. Not every wisdom tooth needs removal, and Dr. Jain will tell you honestly if yours can stay."],
@@ -122,7 +122,7 @@ module.exports = [
   related: ["dental-bonding", "teeth-whitening", "smile-design"]
 },
 {
-  slug: "dental-bonding", name: "Dental bonding", group: "cosmetic", icon: "veneer",
+  slug: "dental-bonding", name: "Dental bonding", group: "cosmetic", icon: "wand",
   short: "A quick, conservative way to repair chips, gaps and discolouration.",
   summary: "Bonding uses tooth-coloured resin shaped directly on the tooth to repair chips, close small gaps or improve shape, often in a single visit.",
   what: ["The surface of the tooth is lightly prepared, resin is applied and sculpted, then set with a special light and polished.", "It is a conservative treatment that removes little or no tooth. It suits small changes; larger changes may last longer with veneers or crowns."],
@@ -135,7 +135,7 @@ module.exports = [
   related: ["dental-veneers", "dental-fillings", "smile-design"]
 },
 {
-  slug: "smile-design", name: "Smile design", group: "cosmetic", icon: "spark",
+  slug: "smile-design", name: "Smile design", group: "cosmetic", icon: "smile",
   short: "A planned combination of treatments to improve your smile.",
   summary: "Smile design looks at your teeth, gums and face together and plans the right mix of treatments, from whitening to veneers, for a natural result.",
   what: ["Rather than treating each tooth in isolation, smile design looks at tooth shape, colour, gum line, bite and facial proportions together.", "The plan might include whitening, bonding, veneers, crowns or gum reshaping. We explain the steps, the order and the cost before starting."],
@@ -161,7 +161,7 @@ module.exports = [
   related: ["dental-bridges", "dentures", "tooth-extraction"]
 },
 {
-  slug: "scaling-and-polishing", name: "Scaling and polishing", group: "gum", icon: "spark",
+  slug: "scaling-and-polishing", name: "Scaling and polishing", group: "gum", icon: "shield",
   short: "Professional cleaning to remove tartar, stains and plaque.",
   summary: "Scaling removes hardened tartar that brushing cannot, and polishing smooths and brightens the teeth. It is the simplest way to protect your gums.",
   what: ["Plaque hardens into tartar within days. It irritates gums, causing bleeding, bad breath and, over time, gum disease.", "A professional cleaning removes it and polishes away surface stains, leaving teeth smooth and fresh."],
@@ -174,7 +174,7 @@ module.exports = [
   related: ["deep-cleaning", "gum-treatment", "teeth-whitening"]
 },
 {
-  slug: "deep-cleaning", name: "Deep cleaning (root planing)", group: "gum", icon: "spark",
+  slug: "deep-cleaning", name: "Deep cleaning (root planing)", group: "gum", icon: "drop",
   short: "Cleaning below the gum line to treat early gum disease.",
   summary: "Deep cleaning removes tartar and bacteria from below the gum line and smooths the root surfaces so gums can heal and tighten again.",
   what: ["When gum disease sets in, pockets form between teeth and gums where bacteria collect. Regular brushing cannot reach them.", "Scaling and root planing cleans these pockets thoroughly, usually in one or more visits under local anaesthesia."],
@@ -187,7 +187,7 @@ module.exports = [
   related: ["scaling-and-polishing", "gum-treatment", "tooth-extraction"]
 },
 {
-  slug: "gum-treatment", name: "Gum disease treatment", group: "gum", icon: "spark",
+  slug: "gum-treatment", name: "Gum disease treatment", group: "gum", icon: "heart",
   short: "Stop bleeding gums and protect the bone that holds your teeth.",
   summary: "Gum disease is a leading cause of tooth loss in adults but is treatable, especially when caught early. We examine, explain and treat it step by step.",
   what: ["Gingivitis is the early stage: gums are red, swollen and bleed easily. It is reversible with cleaning and good home care.", "If untreated it can progress to periodontitis, where the supporting bone is damaged and teeth become loose. Treatment aims to control the infection and keep your teeth."],

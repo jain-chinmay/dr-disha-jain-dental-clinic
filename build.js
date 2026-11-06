@@ -25,6 +25,15 @@ const ICON = {
   circle: '<circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="6"/>',
   arrow: '<path d="M10 38l28-28M30 10h8v8"/>',
   denture: '<path d="M6 22c4 14 32 14 36 0-6 4-30 4-36 0z"/><path d="M14 26v4M20 28v4M28 28v4M34 26v4"/>',
+  smile: '<circle cx="24" cy="24" r="17"/><path d="M16 27c2 5 14 5 16 0"/><path d="M18 19v2M30 19v2"/>',
+  shield: '<path d="M24 6l14 5v10c0 9-6 16-14 20C16 37 10 30 10 21V11z"/><path d="M18 24l4 4 8-9"/>',
+  drop: '<path d="M24 6c8 10 12 16 12 22a12 12 0 0 1-24 0c0-6 4-12 12-22z"/>',
+  heart: '<path d="M24 40C10 30 8 21 8 17a8 8 0 0 1 16-2 8 8 0 0 1 16 2c0 4-2 13-16 23z"/>',
+  wand: '<path d="M10 38L30 18"/><path d="M32 7v7M28.5 10.5h7M39 21v6M36 24h6"/>',
+  kid: '<circle cx="24" cy="27" r="15"/><path d="M17 31c2 4 12 4 14 0"/><path d="M18 25v1M30 25v1"/><path d="M22 12c0-5 8-5 8 0"/>',
+  braces: '<rect x="6" y="16" width="36" height="16" rx="6"/><path d="M6 24h36"/><path d="M15 20v8M24 20v8M33 20v8"/>',
+  tray: '<path d="M6 28c0-10 8-16 18-16s18 6 18 16c0 2-3 3-5 1-3-3-9-4-13-4s-10 1-13 4c-2 2-5 1-5-1z"/>',
+  molar: '<path d="M10 14c0-5 5-7 9-5 3 1 7 1 10 0 4-2 9 0 9 5 0 7-3 9-3 15 0 4-2 7-4 7s-3-4-4-8c-1-3-4-3-5 0-1 4-2 8-4 8s-4-3-4-7c0-6-4-8-4-15z"/>',
   bridge: '<path d="M6 34V20c0-4 4-6 8-6h20c4 0 8 2 8 6v14"/><path d="M16 34V24M24 34V24M32 34V24"/>'
 };
 const icon = k => `<svg viewBox="0 0 48 48" aria-hidden="true">${ICON[k] || ICON.tooth}</svg>`;
@@ -33,7 +42,7 @@ const icon = k => `<svg viewBox="0 0 48 48" aria-hidden="true">${ICON[k] || ICON
 const link = (b, t) => `<a href="${b}${urlOf(t)}">${esc(t.name)}</a>`;
 
 function header(b) {
-  const mega = GROUPS.map(([g, label]) => `<div><h4>${label}</h4>${byGroup(g).map(t => link(b, t)).join("")}</div>`).join("");
+  const mega = GROUPS.map(([g, label]) => `<div><p class="h4">${label}</p>${byGroup(g).map(t => link(b, t)).join("")}</div>`).join("");
   return `<!--HEADER-->
 <div class="topbar"><div class="wrap">
   <span>📍 Palam Vihar, Gurugram</span>
@@ -64,9 +73,9 @@ function footer(b) {
       <p>Gentle, clearly explained dental care in Palam Vihar, Gurugram, with Dr. Disha Jain, BDS.</p>
       <div class="cta-row"><a class="btn btn-sm" data-call href="tel:+919650647352">Call now</a><a class="btn btn-sm btn-ghost" data-wa href="#">WhatsApp</a></div>
     </div>
-    <nav aria-label="Treatments"><h4>Treatments</h4><ul>${T.slice(0, 8).map(t => `<li>${link(b, t)}</li>`).join("")}<li><a href="${b}treatments/">All treatments →</a></li></ul></nav>
-    <nav aria-label="Clinic"><h4>Clinic</h4><ul><li><a href="${b}about/">Our doctor</a></li><li><a href="${b}clinic/">The clinic</a></li><li><a href="${b}reviews/">Patient reviews</a></li><li><a href="${b}faq/">FAQ</a></li><li><a href="${b}blog/">Blog</a></li><li><a href="${b}dentist-in-palam-vihar/">Dentist in Palam Vihar</a></li><li><a href="${b}contact/">Contact and booking</a></li><li><a href="${b}privacy/">Privacy</a></li></ul></nav>
-    <div><h4>Contact</h4>
+    <nav aria-label="Treatments"><p class="h4">Treatments</p><ul>${T.slice(0, 8).map(t => `<li>${link(b, t)}</li>`).join("")}<li><a href="${b}treatments/">All treatments →</a></li></ul></nav>
+    <nav aria-label="Clinic"><p class="h4">Clinic</p><ul><li><a href="${b}about/">Our doctor</a></li><li><a href="${b}clinic/">The clinic</a></li><li><a href="${b}reviews/">Patient reviews</a></li><li><a href="${b}faq/">FAQ</a></li><li><a href="${b}blog/">Blog</a></li><li><a href="${b}dentist-in-palam-vihar/">Dentist in Palam Vihar</a></li><li><a href="${b}contact/">Contact and booking</a></li><li><a href="${b}privacy/">Privacy</a></li></ul></nav>
+    <div><p class="h4">Contact</p>
       <address>C-73, First Floor, Gate No. 2,<br>Palam Vyapar Kendra, Palam Vihar,<br>Gurugram, Haryana</address>
       <p><a data-call href="tel:+919650647352">${PHONE_TXT}</a></p>
       <p><b>Mon to Sat</b><br>10 am to 2 pm, 5 pm to 8 pm<br><b>Sunday</b> 10 am to 2 pm</p>
@@ -103,7 +112,7 @@ function bookBand(issue) {
   </form></div></section>`;
 }
 
-function page({ file, title, desc, body, schema = [], depth, ogImage = "assets/clinic-chair.jpg" }) {
+function page({ file, title, desc, body, schema = [], depth, ogImage = "assets/src/clinic-chair.jpg" }) {
   const b = "../".repeat(depth);
   const canon = SITE + (file === "index.html" ? "" : file.replace(/index\.html$/, ""));
   const ld = schema.map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n");
@@ -111,18 +120,21 @@ function page({ file, title, desc, body, schema = [], depth, ogImage = "assets/c
 <html lang="en">
 <head>
 <meta charset="utf-8">
+${file === "404.html" ? `<base href="${SITE}">\n<meta name="robots" content="noindex">` : ""}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${canon}">
 <meta name="theme-color" content="#b3182b">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap">
+<link rel="preload" href="${b}assets/fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${b}assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="${b}assets/logo.svg" type="image/svg+xml">
 <link rel="icon" href="${b}assets/favicon.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="${b}assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="${NAME}">
+<meta property="og:url" content="${canon}">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${SITE}${ogImage}">
@@ -130,15 +142,16 @@ function page({ file, title, desc, body, schema = [], depth, ogImage = "assets/c
 ${ld}
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 ${header(b)}
-<main>
+<main id="main" tabindex="-1">
 ${body(b)}
 </main>
 ${footer(b)}
 ${sticky}
 <script src="${b}config.js"></script>
-<script src="${b}main.js"></script>
+<script src="${b}main.js" defer></script>
 </body>
 </html>
 `;
@@ -158,7 +171,7 @@ const chips = `<ul class="chips"><li>BDS dentist</li><li>13+ years</li><li>₹40
 
 // ---------- hero photo, glance data, page sections ----------
 const PHOTOS = [["clinic-chair", "Treatment chair with overhead light and monitor"], ["clinic-treatment", "Dr. Disha Jain treating a young patient"], ["clinic-desk", "Consultation desk"], ["clinic-chair-2", "Dental chair and equipment"], ["clinic-cabinets", "Instrument and storage cabinets"], ["clinic-treatment-2", "Dr. Disha Jain at the chair during a check-up"]];
-const heroPhoto = (b, i) => { const [f, a] = PHOTOS[i % PHOTOS.length]; return `<div class="hero-photo"><img src="${b}assets/${f}.jpg" width="900" height="600" alt="${a}" fetchpriority="high"><div class="hp-badge"><img src="${b}assets/doctor-1.jpg" width="40" height="50" alt=""><span><b>Dr. Disha Jain, BDS</b>13+ years of experience</span></div></div>`; };
+const heroPhoto = (b, i) => { const [f, a] = PHOTOS[i % PHOTOS.length]; return `<div class="hero-photo"><img src="${b}assets/${f}.webp" srcset="${b}assets/${f}-480.webp 480w, ${b}assets/${f}.webp 900w" sizes="(max-width:820px) 100vw, 560px" width="900" height="600" alt="${a}" fetchpriority="high"><div class="hp-badge"><img src="${b}assets/doctor-1-480.webp" width="40" height="50" alt=""><span><b>Dr. Disha Jain, BDS</b>13+ years of experience</span></div></div>`; };
 const heroSplit = (b, text, i) => `<section class="page-hero"><div class="wrap hero-split"><div class="hero-text">${text}</div>${heroPhoto(b, i)}</div></section>`;
 const GLANCE = {
   "root-canal-treatment": ["1 to 3 visits", "Local anaesthesia", "Keeps your own tooth"], "dental-fillings": ["Usually 1 visit", "Numbing if needed", "Stops decay spreading"],
@@ -187,7 +200,7 @@ T.forEach(t => {
   const crumbLDItems = [["Treatments", "treatments/"], [t.name, urlOf(t)]];
   urls.push(urlOf(t));
   page({
-    file, depth: 1,
+    file, depth: 1, ogImage: `assets/src/${PHOTOS[T.indexOf(t) % PHOTOS.length][0]}.jpg`,
     title: `${t.name} in Palam Vihar, Gurugram | ${NAME}`,
     desc: `${t.name} in Palam Vihar, Gurugram with Dr. Disha Jain. ${t.short} Call or WhatsApp to book.`,
     schema: [crumbLD(crumbLDItems), faqLD(t.faqs), { "@context": "https://schema.org", "@type": "MedicalWebPage", name: `${t.name} in Palam Vihar, Gurugram`, about: { "@type": "MedicalProcedure", name: t.name, description: t.short } }],
@@ -213,7 +226,7 @@ ${heroSplit(b, `${crumbs(b, crumbItems)}<p class="eyebrow">${GROUPLABEL[t.group]
     <p>The cost depends on your mouth, so we give you a clear figure only after examining you. What usually affects it:</p>
     <ul class="ticks">${t.cost.map(w => `<li>${esc(w)}</li>`).join("")}</ul>
     <p>Consultation is ₹400. If treatment is needed, we explain the options and the cost before we start, so there are no surprises.</p></details>
-    <div class="doc-card" id="why"><img src="${b}assets/doctor-1.jpg" width="800" height="1000" alt="Dr. Disha Jain" loading="lazy"><div><p class="eyebrow">Your dentist</p><h2>Dr. Disha Jain, BDS</h2>
+    <div class="doc-card" id="why"><img src="${b}assets/doctor-1.webp" srcset="${b}assets/doctor-1-480.webp 480w, ${b}assets/doctor-1.webp 800w" sizes="(max-width:820px) 100vw, 560px" width="800" height="1000" alt="Dr. Disha Jain" loading="lazy"><div><p class="eyebrow">Your dentist</p><h2>Dr. Disha Jain, BDS</h2>
       <p>13+ years of experience. Trained as a resident in Delhi government hospitals, where she treated a wide range of dental problems. Patients mention how patiently she explains things, so you understand your treatment before you agree to it.</p>
       <p><a class="btn btn-sm btn-ghost" href="${b}about/">Meet Dr. Jain</a></p></div></div>
     <h2 id="faq">Frequently asked questions</h2>
@@ -277,7 +290,7 @@ const info = (file, title, desc, bodyFn, schema = [], eyebrow = "") => { urls.pu
 info("about/index.html", "Dr. Disha Jain, BDS | Dentist in Palam Vihar, Gurugram", "Meet Dr. Disha Jain, a BDS dentist with 13+ years of experience and training in Delhi government hospitals, practising in Palam Vihar, Gurugram.", b => `
 <section class="page-hero"><div class="wrap">${crumbs(b, [["Our doctor", null]])}<p class="eyebrow">Your dentist</p><h1>Dr. Disha Jain, BDS</h1><p class="lead">A calm, patient dentist who believes you should understand your treatment before you agree to it.</p>${heroCTA}</div></section>
 <div class="wrap section two doctor">
-  <div class="photo-frame tall reveal"><img src="${b}assets/doctor-2.jpg" width="800" height="1000" alt="Dr. Disha Jain" loading="lazy"></div>
+  <div class="photo-frame tall reveal"><img src="${b}assets/doctor-2.webp" srcset="${b}assets/doctor-2-480.webp 480w, ${b}assets/doctor-2.webp 800w" sizes="(max-width:820px) 100vw, 560px" width="800" height="1000" alt="Dr. Disha Jain" loading="lazy"></div>
   <div class="reveal prose">
     <h2>About Dr. Jain</h2>
     <p>Dr. Jain has 13+ years of experience. She trained as a resident in Delhi government hospitals, where she treated a very wide range of dental problems, from emergency toothache to complex restorative work. She now runs her own clinic in Palam Vihar.</p>
@@ -293,7 +306,7 @@ ${bookBand()}`);
 info("clinic/index.html", "Our Clinic in Palam Vihar, Gurugram", "A calm, clean dental clinic in Palam Vyapar Kendra, Palam Vihar, Gurugram. See the treatment room, equipment and how to find us.", b => `
 <section class="page-hero"><div class="wrap">${crumbs(b, [["The clinic", null]])}<p class="eyebrow">The clinic</p><h1>A calm place to get your teeth fixed</h1><p class="lead">A comfortable, well-equipped clinic on the first floor of Palam Vyapar Kendra, with a quiet treatment room and an unhurried approach.</p>${heroCTA}</div></section>
 <section class="wrap section"><div class="gallery">
-  ${[["clinic-chair", "Treatment chair with overhead light and monitor"], ["clinic-treatment", "Dr. Disha Jain treating a young patient"], ["clinic-desk", "Consultation desk"], ["clinic-chair-2", "Dental chair and equipment"], ["clinic-cabinets", "Instrument and storage cabinets"], ["clinic-treatment-2", "Dr. Disha Jain at the chair during a check-up"]].map(([f, a]) => `<img class="reveal" src="${b}assets/${f}.jpg" width="900" height="600" alt="${a}" loading="lazy">`).join("")}
+  ${[["clinic-chair", "Treatment chair with overhead light and monitor"], ["clinic-treatment", "Dr. Disha Jain treating a young patient"], ["clinic-desk", "Consultation desk"], ["clinic-chair-2", "Dental chair and equipment"], ["clinic-cabinets", "Instrument and storage cabinets"], ["clinic-treatment-2", "Dr. Disha Jain at the chair during a check-up"]].map(([f, a]) => `<img class="reveal" src="${b}assets/${f}.webp" srcset="${b}assets/${f}-480.webp 480w, ${b}assets/${f}.webp 900w" sizes="(max-width:820px) 100vw, 560px" width="900" height="600" alt="${a}" loading="lazy">`).join("")}
 </div></section>
 <section class="band"><div class="wrap two"><div class="reveal prose"><h2>Find us</h2><address>${NAME}<br>C-73, First Floor, Gate No. 2,<br>Palam Vyapar Kendra, Palam Vihar,<br>Gurugram, Haryana</address><p><b>Mon to Sat</b> 10 am to 2 pm, 5 pm to 8 pm<br><b>Sunday</b> 10 am to 2 pm</p><div class="cta-row"><a class="btn" data-map href="#">Get directions</a><a class="btn btn-ghost" data-call href="tel:+919650647352">Call us</a></div></div>
 <div class="reveal prose"><h2>Look out for</h2><p>Gate No. 2 of Palam Vyapar Kendra, C-73 on the first floor. The lit clinic signboard is at the entrance on the ground floor.</p></div></div></section>
@@ -312,7 +325,7 @@ ${bookBand()}`, [faqLD(GENERAL_FAQ)]);
 info("contact/index.html", "Contact and Book an Appointment", "Call, WhatsApp or visit Dr. Disha Jain Dental Clinic, C-73, First Floor, Gate No. 2, Palam Vyapar Kendra, Palam Vihar, Gurugram.", b => `
 <section class="page-hero"><div class="wrap">${crumbs(b, [["Contact", null]])}<p class="eyebrow">Contact</p><h1>Book an appointment</h1><p class="lead">Call, WhatsApp or send your details below. We reply during clinic hours.</p>${heroCTA}</div></section>
 <section class="wrap section two"><div class="reveal prose"><h2>Visit</h2><address>${NAME}<br>C-73, First Floor, Gate No. 2,<br>Palam Vyapar Kendra, Palam Vihar,<br>Gurugram, Haryana</address><p><b>Phone and WhatsApp:</b> <a data-call href="tel:+919650647352">${PHONE_TXT}</a></p><p><b>Mon to Sat</b> 10 am to 2 pm, 5 pm to 8 pm<br><b>Sunday</b> 10 am to 2 pm</p><div class="cta-row"><a class="btn" data-map href="#">Open in Google Maps</a></div></div><div class="reveal prose"><h2>In pain?</h2><p>Call us rather than messaging. We will try to fit you in the same day. Consultation is ₹400.</p></div></section>
-${bookBand()}`, [{ "@context": "https://schema.org", "@type": "Dentist", name: NAME, telephone: "+919650647352", address: { "@type": "PostalAddress", streetAddress: "C-73, First Floor, Gate No. 2, Palam Vyapar Kendra, Palam Vihar", addressLocality: "Gurugram", addressRegion: "Haryana", addressCountry: "IN" } }]);
+${bookBand()}`, [{"@context":"https://schema.org","@type":"Dentist","name":"Dr. Disha Jain Dental Clinic","url":"https://jain-chinmay.github.io/dr-disha-jain-dental-clinic/","image":"https://jain-chinmay.github.io/dr-disha-jain-dental-clinic/assets/src/clinic-chair.jpg","telephone":"+919650647352","hasMap":"https://share.google/d9TBeavADrDtv2nHe","areaServed":"Gurugram","address":{"@type":"PostalAddress","streetAddress":"C-73, First Floor, Gate No. 2, Palam Vyapar Kendra, Palam Vihar","addressLocality":"Gurugram","addressRegion":"Haryana","addressCountry":"IN"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"14:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"17:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"14:00"}],"founder":{"@type":"Person","name":"Dr. Disha Jain","jobTitle":"Dentist (BDS)"}}]);
 
 info("privacy/index.html", "Privacy", "How this website handles your information.", b => `
 <section class="page-hero"><div class="wrap">${crumbs(b, [["Privacy", null]])}<h1>Privacy</h1></div></section>
@@ -321,6 +334,10 @@ info("privacy/index.html", "Privacy", "How this website handles your information
 <p>If analytics are enabled on this site, they record anonymous usage such as pages viewed and button clicks, to help us improve the site. No personal health information is collected through the website.</p>
 <p>Messages you send us on WhatsApp or phone are used only to arrange and carry out your care. Questions about your information? Call us on ${PHONE_TXT}.</p>
 <p class="note">General dental information on this site is not a substitute for a clinical examination.</p></div></section>`);
+
+page({ file: "404.html", depth: 0, title: `Page not found | ${NAME}`, desc: "This page could not be found.",
+  body: b => `<section class="page-hero"><div class="wrap center"><p class="eyebrow">404</p><h1>We couldn't find that page</h1><p class="lead">The link may be old or mistyped. Try one of these instead.</p><div class="cta-row center-row"><a class="btn" href="${b}">Go to the home page</a><a class="btn btn-ghost" href="${b}treatments/">See all treatments</a></div></div></section>
+<section class="wrap section hub-group"><div class="cards">${T.slice(0, 6).map(t => card(b, t)).join("")}</div></section>` });
 
 require("./build-extra.js")({ T, POSTS, page, urls, crumbs, crumbLD, faqLD, faqHTML, card, heroCTA, chips, bookBand, NAME, esc, urlOf, heroSplit });
 

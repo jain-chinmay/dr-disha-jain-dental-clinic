@@ -22,4 +22,5 @@ Source folder (do not modify): `E:\Misc\Personal\Moti Clinic`  (logos, clinic ph
 - Added after confirmation: kids dentistry, braces, clear aligners, dentist-in-palam-vihar, dentist-in-gurugram, 6 blog posts (`data/posts.js`, rendered by `build-extra.js`). `node check-links.js` verifies internal links.
 - Still pending: results page (needs consented before/after photos; the example slider was removed from the homepage), more area pages, price ranges, real review quotes, doctor registration number, "Leave a review" link.
 - Polish round 1 done: photo heroes, at-a-glance bar, on-this-page menu, timeline steps, collapsible aftercare and cost, doctor card, desktop floating contact pill, fake reviews removed.
+- Polish round 2 done: WebP images with phone sizes (`tools/optimize-images.js`, originals in `assets/src/`), self-hosted fonts, 404 page, per-page share images, distinct icons, print styles, skip link, richer business schema. Lighthouse (mobile, local): home 94 perf, 100 a11y, 100 best-practices, 100 SEO.
 - Theme is white and red with a liquid-glass header that collapses to a floating pill on scroll (`.top.compact` in `style.css`, toggled in `main.js`).
