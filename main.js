@@ -5,15 +5,23 @@
   var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   d.documentElement.classList.add("js");
 
-  // Google tag (only when an ID is configured)
-  if (c.gaId) {
+  // Google tag: loads only when a GA4 id and/or Google Ads id is configured in config.js
+  var tagIds = [c.gaId, c.adsId].filter(Boolean);
+  if (tagIds.length) {
     var s = d.createElement("script"); s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + c.gaId; d.head.appendChild(s);
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + tagIds[0]; d.head.appendChild(s);
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { dataLayer.push(arguments); };
-    gtag("js", new Date()); gtag("config", c.gaId);
+    gtag("js", new Date());
+    tagIds.forEach(function (id) { gtag("config", id); });
   }
-  function track(name) { if (window.gtag) gtag("event", name); }
+  // Record an event, and a Google Ads conversion when a label is set for it
+  function track(name) {
+    if (!window.gtag) return;
+    gtag("event", name);
+    var label = c.adsConversions && c.adsConversions[name];
+    if (c.adsId && label) gtag("event", "conversion", { send_to: c.adsId + "/" + label });
+  }
 
   // Contact links
   function wa(text) { return "https://wa.me/" + c.whatsapp + "?text=" + encodeURIComponent(text); }

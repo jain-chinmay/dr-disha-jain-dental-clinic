@@ -331,7 +331,7 @@ info("privacy/index.html", "Privacy", "How this website handles your information
 <section class="page-hero"><div class="wrap">${crumbs(b, [["Privacy", null]])}<h1>Privacy</h1></div></section>
 <section class="wrap section"><div class="prose narrow">
 <p>This website does not store your details. When you use the appointment form, your name, mobile number and request open in WhatsApp so you can send them to the clinic yourself.</p>
-<p>If analytics are enabled on this site, they record anonymous usage such as pages viewed and button clicks, to help us improve the site. No personal health information is collected through the website.</p>
+<p>If analytics or Google Ads measurement are enabled on this site, Google records usage such as pages viewed and taps on the Call, WhatsApp and appointment buttons, to help us improve the site and measure our advertising. Your name and phone number are not sent to Google by the website. No personal health information is collected through the website.</p>
 <p>Messages you send us on WhatsApp or phone are used only to arrange and carry out your care. Questions about your information? Call us on ${PHONE_TXT}.</p>
 <p class="note">General dental information on this site is not a substitute for a clinical examination.</p></div></section>`);
 

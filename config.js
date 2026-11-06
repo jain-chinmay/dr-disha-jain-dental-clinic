@@ -6,7 +6,13 @@ window.CLINIC = {
   // Paste the clinic's Google Business Profile link here (Maps > Share > Copy link) so taps open her exact listing. Empty = search by name, address and phone.
   mapsUrl: "https://share.google/d9TBeavADrDtv2nHe",
   showBeforeAfter: true,      // set false (or replace assets/before.svg + after.svg with real, consented cases) before ads go live
-  gaId: "",                   // e.g. "G-XXXXXXX" or "AW-XXXXXXX"; leave empty until the Ads account is ready
+  gaId: "",                   // Google Analytics 4 ID, e.g. "G-XXXXXXXXXX" (optional)
+  adsId: "",                  // Google Ads ID, e.g. "AW-1234567890"; leave empty until the Ads account is ready
+  adsConversions: {           // conversion labels from Google Ads > Goals > Conversions (the part after the slash in send_to)
+    call_click: "",           // taps on any Call button
+    whatsapp_click: "",       // taps on any WhatsApp button
+    lead_submit: ""           // appointment form sent
+  },
 
   // Flip to true to show "From ₹X" on the treatment cards once prices are agreed.
   showPrices: false,
