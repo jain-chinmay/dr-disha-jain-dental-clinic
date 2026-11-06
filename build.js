@@ -65,22 +65,16 @@ function footer(b) {
 <footer class="foot">
   <div class="wrap foot-grid">
     <div class="foot-brand">
-      <a class="brand" href="${b || "./"}"><img src="${b}assets/logo.svg" width="44" height="44" alt=""><span>Dr. Disha Jain <em>Dental Clinic</em></span></a>
-      <p>Gentle, clearly explained dental care in Palam Vihar, Gurugram, with Dr. Disha Jain, BDS.</p>
-      <div class="cta-row"><a class="btn btn-sm" data-call href="tel:+919650647352">Call now</a><a class="btn btn-sm btn-ghost" data-wa href="#">WhatsApp</a></div>
+      <a class="brand" href="${b || "./"}"><img src="${b}assets/logo.svg" width="40" height="40" alt=""><span>Dr. Disha Jain <em>Dental Clinic</em></span></a>
+      <address>C-73, First Floor, Gate No. 2, Palam Vyapar Kendra,<br>Palam Vihar, Gurugram, Haryana</address>
+      <p><a data-call href="tel:+919650647352">${PHONE_TXT}</a> · <a data-map href="#">Directions</a></p>
+      <p class="foot-hours">Mon to Sat 10-2, 5-8 · Sun 10-2</p>
     </div>
     <nav aria-label="Treatments"><p class="h4">Treatments</p><ul>${T.slice(0, 8).map(t => `<li>${link(b, t)}</li>`).join("")}<li><a href="${b}treatments/">All treatments →</a></li></ul></nav>
-    <nav aria-label="Clinic"><p class="h4">Clinic</p><ul><li><a href="${b}about/">Our doctor</a></li><li><a href="${b}clinic/">The clinic</a></li><li><a href="${b}reviews/">Patient reviews</a></li><li><a href="${b}faq/">FAQ</a></li><li><a href="${b}blog/">Blog</a></li><li><a href="${b}dentist-in-palam-vihar/">Dentist in Palam Vihar</a></li><li><a href="${b}contact/">Contact and booking</a></li><li><a href="${b}privacy/">Privacy</a></li></ul></nav>
-    <div><p class="h4">Contact</p>
-      <address>C-73, First Floor, Gate No. 2,<br>Palam Vyapar Kendra, Palam Vihar,<br>Gurugram, Haryana</address>
-      <p><a data-call href="tel:+919650647352">${PHONE_TXT}</a></p>
-      <p><b>Mon to Sat</b><br>10 am to 2 pm, 5 pm to 8 pm<br><b>Sunday</b> 10 am to 2 pm</p>
-      <p><a data-map href="#">Get directions on Google Maps</a></p>
-    </div>
+    <nav aria-label="Clinic"><p class="h4">Clinic</p><ul><li><a href="${b}about/">Our doctor</a></li><li><a href="${b}clinic/">The clinic</a></li><li><a href="${b}reviews/">Reviews</a></li><li><a href="${b}blog/">Blog</a></li><li><a href="${b}faq/">FAQ</a></li><li><a href="${b}contact/">Contact</a></li><li><a href="${b}privacy/">Privacy</a></li></ul></nav>
   </div>
   <div class="foot-bar"><div class="wrap">
-    <p>© <span id="yr"></span> ${NAME}, Palam Vihar, Gurugram. All rights reserved.</p>
-    <p>Results vary from patient to patient. This website gives general information and does not replace a clinical examination.</p>
+    <p>© <span id="yr"></span> ${NAME}. Results vary from patient to patient. This website gives general information and does not replace a clinical examination.</p>
   </div></div>
 </footer>
 <!--/FOOTER-->`;
@@ -160,7 +154,7 @@ const crumbs = (b, items) => `<nav class="crumbs" aria-label="Breadcrumb"><a hre
 const crumbLD = items => ({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [["Home", ""]].concat(items).map((it, i) => ({ "@type": "ListItem", position: i + 1, name: it[0], item: SITE + (it[1] || "") })) });
 const faqLD = faqs => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
 const faqHTML = faqs => faqs.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("");
-const card = (b, t) => `<a class="card tcard reveal" href="${b}${urlOf(t)}">${icon(t.icon)}<h3>${esc(t.name)}</h3><p>${esc(t.short)}</p><span class="more">Read more →</span></a>`;
+const card = (b, t) => `<a class="card tcard reveal" href="${b}${urlOf(t)}"><h3>${esc(t.name)}</h3><p>${esc(t.short)}</p><span class="more">Read more →</span></a>`;
 const heroCTA = `<div class="cta-row"><a class="btn" data-call href="tel:+919650647352">Call to book</a><a class="btn btn-ghost" data-wa href="#">WhatsApp us</a></div>`;
 const chips = `<ul class="chips"><li>BDS dentist</li><li>13+ years</li><li>₹400 consultation</li><li>Open Sunday mornings</li></ul>`;
 

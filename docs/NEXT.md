@@ -24,4 +24,5 @@ Source folder (do not modify): `E:\Misc\Personal\Moti Clinic`  (logos, clinic ph
 - Polish round 1 done: photo heroes, at-a-glance bar, on-this-page menu, timeline steps, collapsible aftercare and cost, doctor card, desktop floating contact pill, fake reviews removed.
 - Polish round 2 done: WebP images with phone sizes (`tools/optimize-images.js`, originals in `assets/src/`), self-hosted fonts, 404 page, per-page share images, distinct icons, print styles, skip link, richer business schema. Lighthouse (mobile, local): home 94 perf, 100 a11y, 100 best-practices, 100 SEO.
 - Minimal pass done: no top strip, 4 header links + compact Treatments dropdown, single-column treatment pages with one-line summary and folds, homepage decorative strips removed, plain hub/area banners, full-screen mobile menu sheet.
+- Level 3 done: calm grey and white surfaces, flat bordered cards without icons, red only on buttons and small accents, light three-column footer, consistent spacing and type scale.
 - Theme is white and red with a liquid-glass header that collapses to a floating pill on scroll (`.top.compact` in `style.css`, toggled in `main.js`).
