@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jain-chinmay.github.io/dr-disha-jain-dental-clinic/sitemap.xml

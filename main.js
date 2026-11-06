@@ -37,6 +37,7 @@
   var t = new URLSearchParams(location.search).get("t");
   var v = c.variants[t] || c.variants["default"];
   var h1 = d.getElementById("h-title");
+  if (h1) {
   d.getElementById("h-eyebrow").textContent = v.eyebrow;
   d.getElementById("h-sub").textContent = v.sub;
   h1.textContent = v.h1;
@@ -49,6 +50,7 @@
     h1.innerHTML = v.h1.split(" ").map(function (w, i) {
       return '<span class="w" aria-hidden="true" style="animation-delay:' + (0.1 + i * 0.07).toFixed(2) + 's">' + w.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "</span>";
     }).join(" ");
+  }
   }
 
   // Prices (hidden until showPrices is true and a price is set)
@@ -71,7 +73,7 @@
 
   // Lead form -> WhatsApp
   var form = d.getElementById("lead");
-  form.addEventListener("submit", function (e) {
+  if (form) form.addEventListener("submit", function (e) {
     e.preventDefault();
     var n = form.name.value.trim(), p = form.phone.value.replace(/\D/g, "");
     if (!n || p.length < 10) {
@@ -81,7 +83,14 @@
     track("lead_submit");
     window.open(wa("Hi, I'm " + n + " (" + p + "). I need: " + form.issue.value + ". Please share an appointment slot."), "_blank", "noopener");
   });
-  d.getElementById("yr").textContent = new Date().getFullYear();
+  var yr = d.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
+
+  // Mobile menu
+  var mb = d.getElementById("menu-btn"), hd = d.querySelector(".top");
+  if (mb) {
+    mb.addEventListener("click", function () { var o = hd.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
+    d.querySelectorAll("#nav a").forEach(function (a) { a.addEventListener("click", function () { hd.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); }); });
+  }
 
   // Scroll reveal (fade only when reduced motion is on; CSS drops the movement)
   var items = d.querySelectorAll(".reveal");
@@ -141,7 +150,8 @@
   function frame() {
     var y = window.scrollY, h = window.innerHeight, max = d.documentElement.scrollHeight - h;
     top.classList.toggle("scrolled", y > 8);
-    sticky.classList.toggle("show", y > hero.offsetHeight * 0.6);
+    top.classList.toggle("compact", y > 90);
+    sticky.classList.toggle("show", y > (hero ? hero.offsetHeight * 0.6 : 200));
     prog.style.setProperty("--sp", max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
     if (!reduce) {
       if (y < h * 1.5) par.forEach(function (el) { el.style.transform = "translate3d(0," + (y * el.dataset.speed).toFixed(1) + "px,0)"; });

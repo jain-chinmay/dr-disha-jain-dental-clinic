@@ -15,3 +15,9 @@ Source folder (do not modify): `E:\Misc\Personal\Moti Clinic`  (logos, clinic ph
 - P2 Treatment-specific landing pages / `?t=` variants (dentures, RCT, whitening, crowns, implants).
 - P3 Confirm facts with Dr. Jain (address, hours, 13+ years, Sundays, Rs 400); real approved reviews; decide on before/after.
 - P4 Google Ads tag (`gaId`), privacy page, Dental Council / Google Ads compliance check.
+
+## Multi-page site (built 2026-11)
+- `node build.js` regenerates all inner pages, the shared header/footer (also inside `index.html` between the HEADER/FOOTER markers), `sitemap.xml` and `robots.txt`. Treatment content is in `data/treatments.js`; info pages are in `build.js`.
+- 15 treatment pages + 3 hubs + about, clinic, reviews, faq, contact, privacy. No prices shown until confirmed.
+- Not built yet (needs input): kids' dentistry, braces, aligners (confirm she offers them), results page (consented photos), local-area pages (confirm areas), blog posts, real reviews quotes, doctor registration number.
+- Theme is white and red with a liquid-glass header that collapses to a floating pill on scroll (`.top.compact` in `style.css`, toggled in `main.js`).
