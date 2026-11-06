@@ -156,6 +156,24 @@ const card = (b, t) => `<a class="card tcard reveal" href="${b}${urlOf(t)}">${ic
 const heroCTA = `<div class="cta-row"><a class="btn" data-call href="tel:+919650647352">Call to book</a><a class="btn btn-ghost" data-wa href="#">WhatsApp us</a></div>`;
 const chips = `<ul class="chips"><li>BDS dentist</li><li>13+ years</li><li>₹400 consultation</li><li>Open Sunday mornings</li></ul>`;
 
+// ---------- hero photo, glance data, page sections ----------
+const PHOTOS = [["clinic-chair", "Treatment chair with overhead light and monitor"], ["clinic-treatment", "Dr. Disha Jain treating a young patient"], ["clinic-desk", "Consultation desk"], ["clinic-chair-2", "Dental chair and equipment"], ["clinic-cabinets", "Instrument and storage cabinets"], ["clinic-treatment-2", "Dr. Disha Jain at the chair during a check-up"]];
+const heroPhoto = (b, i) => { const [f, a] = PHOTOS[i % PHOTOS.length]; return `<div class="hero-photo"><img src="${b}assets/${f}.jpg" width="900" height="600" alt="${a}" fetchpriority="high"><div class="hp-badge"><img src="${b}assets/doctor-1.jpg" width="40" height="50" alt=""><span><b>Dr. Disha Jain, BDS</b>13+ years of experience</span></div></div>`; };
+const heroSplit = (b, text, i) => `<section class="page-hero"><div class="wrap hero-split"><div class="hero-text">${text}</div>${heroPhoto(b, i)}</div></section>`;
+const GLANCE = {
+  "root-canal-treatment": ["1 to 3 visits", "Local anaesthesia", "Keeps your own tooth"], "dental-fillings": ["Usually 1 visit", "Numbing if needed", "Stops decay spreading"],
+  "dental-crowns": ["Usually 2 visits", "Numbed for preparation", "Protects a weak tooth"], "dental-bridges": ["2 to 3 visits", "Numbed for preparation", "Fixed, no surgery"],
+  "dentures": ["Several fitting visits", "No numbing for fitting", "Removable teeth"], "tooth-extraction": ["Usually 1 visit", "Local anaesthesia", "Relieves pain and infection"],
+  "wisdom-tooth-removal": ["Usually 1 visit", "Local anaesthesia", "Ends repeated swelling"], "teeth-whitening": ["Often 1 visit", "No numbing needed", "Brighter natural teeth"],
+  "dental-veneers": ["2 to 3 visits", "Numbing if needed", "Fixes chips, gaps, stains"], "dental-bonding": ["Often 1 visit", "Usually no numbing", "Repairs small chips and gaps"],
+  "smile-design": ["Planned in stages", "Depends on treatment", "A personalised plan"], "dental-implants": ["Several months, in stages", "Local anaesthesia", "Replaces a tooth from the root"],
+  "scaling-and-polishing": ["Usually 1 visit", "Usually no numbing", "Healthier gums"], "deep-cleaning": ["1 to several visits", "Local anaesthesia", "Treats early gum disease"],
+  "gum-treatment": ["Several visits", "Numbing for deep cleaning", "Controls gum disease"], "kids-dentistry": ["Short, gentle visits", "Child-friendly approach", "Prevention first"],
+  "braces": ["Often 1 to 2 years", "Adjustments every few weeks", "Straighter, healthier bite"], "clear-aligners": ["Several months to a year or more", "Removable trays", "Discreet straightening"]
+};
+const SECTIONS = [["what", "What is it?"], ["who", "Who is it for?"], ["steps", "Step by step"], ["benefits", "Benefits"], ["aftercare", "Aftercare"], ["cost", "Cost"], ["why", "Your dentist"], ["faq", "FAQs"]];
+const tocLinks = () => SECTIONS.map(([id, l]) => `<li><a href="#${id}">${l}</a></li>`).join("");
+
 // ---------- treatment pages ----------
 const GROUPLABEL = { restorative: "Restorative dentistry", cosmetic: "Cosmetic dentistry", implants: "Dental implants", gum: "Gum care", kids: "Kids' dentistry", ortho: "Braces and aligners" };
 const GROUPHUB = { restorative: "restorative-dentistry/", cosmetic: "cosmetic-dentistry/" };
@@ -174,31 +192,30 @@ T.forEach(t => {
     desc: `${t.name} in Palam Vihar, Gurugram with Dr. Disha Jain. ${t.short} Call or WhatsApp to book.`,
     schema: [crumbLD(crumbLDItems), faqLD(t.faqs), { "@context": "https://schema.org", "@type": "MedicalWebPage", name: `${t.name} in Palam Vihar, Gurugram`, about: { "@type": "MedicalProcedure", name: t.name, description: t.short } }],
     body: b => `
-<section class="page-hero"><div class="wrap">
-  ${crumbs(b, crumbItems)}
-  <p class="eyebrow">${GROUPLABEL[t.group]}</p>
-  <h1>${esc(t.name)} in Palam Vihar, Gurugram</h1>
-  <p class="lead">${esc(t.summary)}</p>
-  ${heroCTA}${chips}
-</div></section>
+${heroSplit(b, `${crumbs(b, crumbItems)}<p class="eyebrow">${GROUPLABEL[t.group]}</p><h1>${esc(t.name)} in Palam Vihar, Gurugram</h1><p class="lead">${esc(t.summary)}</p>${heroCTA}`, T.indexOf(t))}
+<div class="wrap"><ul class="glance">
+  <li><i>Visits</i><b>${GLANCE[t.slug][0]}</b></li><li><i>Comfort</i><b>${GLANCE[t.slug][1]}</b></li><li><i>Best for</i><b>${GLANCE[t.slug][2]}</b></li><li><i>Consultation</i><b>₹400</b></li>
+</ul></div>
 <div class="wrap article-grid">
   <article class="prose">
-    <h2>What is ${esc(t.name.toLowerCase())}?</h2>
+    <details class="toc-m"><summary>On this page</summary><ul>${tocLinks()}</ul></details>
+    <h2 id="what">What is ${esc(t.name.toLowerCase())}?</h2>
     ${t.what.map(p => `<p>${esc(p)}</p>`).join("")}
-    <h2>Who is it for?</h2>
+    <h2 id="who">Who is it for?</h2>
     <ul class="ticks">${t.who.map(w => `<li>${esc(w)}</li>`).join("")}</ul>
-    <h2>What happens, step by step</h2>
+    <h2 id="steps">What happens, step by step</h2>
     <ol class="numlist">${t.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>
-    <h2>Benefits</h2>
+    <h2 id="benefits">Benefits</h2>
     <div class="mini-cards">${t.benefits.map(([h, d]) => `<div><h3>${esc(h)}</h3><p>${esc(d)}</p></div>`).join("")}</div>
-    <h2>Aftercare</h2>
-    <ul class="ticks">${t.aftercare.map(w => `<li>${esc(w)}</li>`).join("")}</ul>
-    <h2>Cost of ${esc(t.name.toLowerCase())} in Gurugram</h2>
+    <details class="fold" id="aftercare"><summary><h2>Aftercare</h2></summary>
+    <ul class="ticks">${t.aftercare.map(w => `<li>${esc(w)}</li>`).join("")}</ul></details>
+    <details class="fold" id="cost" open><summary><h2>Cost of ${esc(t.name.toLowerCase())} in Gurugram</h2></summary>
     <p>The cost depends on your mouth, so we give you a clear figure only after examining you. What usually affects it:</p>
     <ul class="ticks">${t.cost.map(w => `<li>${esc(w)}</li>`).join("")}</ul>
-    <p>Consultation is ₹400. If treatment is needed, we explain the options and the cost before we start, so there are no surprises.</p>
-    <h2>Why choose Dr. Disha Jain</h2>
-    <p>Dr. Jain has 13+ years of experience and trained as a resident in Delhi government hospitals, where she treated a wide range of dental problems. Patients mention how patiently she explains things. You will understand your treatment before you agree to it. <a href="${b}about/">Meet Dr. Jain</a>.</p>
+    <p>Consultation is ₹400. If treatment is needed, we explain the options and the cost before we start, so there are no surprises.</p></details>
+    <div class="doc-card" id="why"><img src="${b}assets/doctor-1.jpg" width="800" height="1000" alt="Dr. Disha Jain" loading="lazy"><div><p class="eyebrow">Your dentist</p><h2>Dr. Disha Jain, BDS</h2>
+      <p>13+ years of experience. Trained as a resident in Delhi government hospitals, where she treated a wide range of dental problems. Patients mention how patiently she explains things, so you understand your treatment before you agree to it.</p>
+      <p><a class="btn btn-sm btn-ghost" href="${b}about/">Meet Dr. Jain</a></p></div></div>
     <h2 id="faq">Frequently asked questions</h2>
     <div class="faq-list">${faqHTML(t.faqs)}</div>
   </article>
@@ -210,21 +227,23 @@ T.forEach(t => {
       <a class="btn btn-ghost" data-wa href="#">WhatsApp us</a>
       <p class="note">Mon to Sat 10-2, 5-8 · Sun 10-2</p>
     </div>
-    <div class="side-card"><h3>Related treatments</h3><ul class="side-links">${rel.map(r => `<li>${link(b, r)}</li>`).join("")}</ul><p><a href="${b}treatments/">All treatments →</a></p></div>
+    <nav class="side-card toc" aria-label="On this page"><h3>On this page</h3><ul class="side-links">${tocLinks()}</ul></nav>
   </aside>
 </div>
+<section class="wrap section hub-group related"><h2 class="reveal">Related treatments</h2><div class="cards">${rel.map(r => card(b, r)).join("")}</div><p class="all-link"><a class="btn btn-ghost" href="${b}treatments/">All treatments</a></p></section>
 ${bookBand(t.name.includes("Root") ? "Root canal" : t.slug.includes("whitening") ? "Teeth whitening" : t.slug.includes("implant") ? "Dental implant" : t.slug.includes("denture") ? "Dentures" : t.group === "gum" ? "Cleaning / check-up" : t.group === "cosmetic" ? "Crown / bridge / veneers" : "Filling / extraction")}`
   });
 });
 
 // ---------- hubs ----------
+let hubIdx = 3;
 function hub({ file, title, h1, desc, lead, groups, eyebrow, crumbLabel }) {
   urls.push(file.replace("index.html", ""));
   page({
     file, depth: 1, title: `${title} | ${NAME}`, desc,
     schema: [crumbLD([[crumbLabel, file.replace("index.html", "")]])],
     body: b => `
-<section class="page-hero"><div class="wrap">${crumbs(b, [[crumbLabel, null]])}<p class="eyebrow">${eyebrow}</p><h1>${h1}</h1><p class="lead">${lead}</p>${heroCTA}${chips}</div></section>
+${heroSplit(b, `${crumbs(b, [[crumbLabel, null]])}<p class="eyebrow">${eyebrow}</p><h1>${h1}</h1><p class="lead">${lead}</p>${heroCTA}${chips}`, hubIdx++)}
 ${groups.map(([label, items]) => `<section class="wrap section hub-group"><h2 class="reveal">${label}</h2><div class="cards">${items.map(t => card(b, t)).join("")}</div></section>`).join("")}
 ${bookBand()}`
   });
@@ -303,7 +322,7 @@ info("privacy/index.html", "Privacy", "How this website handles your information
 <p>Messages you send us on WhatsApp or phone are used only to arrange and carry out your care. Questions about your information? Call us on ${PHONE_TXT}.</p>
 <p class="note">General dental information on this site is not a substitute for a clinical examination.</p></div></section>`);
 
-require("./build-extra.js")({ T, POSTS, page, urls, crumbs, crumbLD, faqLD, faqHTML, card, heroCTA, chips, bookBand, NAME, esc, urlOf });
+require("./build-extra.js")({ T, POSTS, page, urls, crumbs, crumbLD, faqLD, faqHTML, card, heroCTA, chips, bookBand, NAME, esc, urlOf, heroSplit });
 
 // ---------- refresh index.html header/footer ----------
 let idx = fs.readFileSync(path.join(__dirname, "index.html"), "utf8");

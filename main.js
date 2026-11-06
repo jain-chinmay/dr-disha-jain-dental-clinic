@@ -94,6 +94,19 @@
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape') hm.classList.remove('open'); });
   }
 
+  // On-this-page highlighting
+  var tocLinks = d.querySelectorAll(".toc a");
+  if (tocLinks.length && "IntersectionObserver" in window) {
+    var map = {};
+    tocLinks.forEach(function (l) { map[l.getAttribute("href").slice(1)] = l; });
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { tocLinks.forEach(function (l) { l.classList.remove("on"); }); var l = map[e.target.id]; if (l) l.classList.add("on"); }
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    Object.keys(map).forEach(function (id) { var el = d.getElementById(id); if (el) spy.observe(el); });
+  }
+
   // Mobile menu
   var mb = d.getElementById("menu-btn"), hd = d.querySelector(".top");
   if (mb) {
