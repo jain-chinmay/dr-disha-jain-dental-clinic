@@ -4,7 +4,7 @@ window.CLINIC = {
   phone: "919650647352",
   whatsapp: "919650647352",
   // Paste the clinic's Google Business Profile link here (Maps > Share > Copy link) so taps open her exact listing. Empty = search by name, address and phone.
-  mapsUrl: "",
+  mapsUrl: "https://share.google/d9TBeavADrDtv2nHe",
   showBeforeAfter: true,      // set false (or replace assets/before.svg + after.svg with real, consented cases) before ads go live
   gaId: "",                   // e.g. "G-XXXXXXX" or "AW-XXXXXXX"; leave empty until the Ads account is ready
 
