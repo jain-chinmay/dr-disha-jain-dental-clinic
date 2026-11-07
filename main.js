@@ -35,7 +35,7 @@
     a.addEventListener("click", function () { track("whatsapp_click"); });
   });
 
-  var mapUrl = c.mapsUrl || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(c.name + ", C-73 Palam Vyapar Kendra, Palam Vihar, Gurugram 9650647352");
+  var mapUrl = c.mapsUrl || "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(c.name + ", C-73 Palam Vyapar Kendra, Palam Vihar, Gurugram");
   d.querySelectorAll("[data-map]").forEach(function (a) {
     a.href = mapUrl; a.target = "_blank"; a.rel = "noopener";
     a.addEventListener("click", function () { track("map_click"); });

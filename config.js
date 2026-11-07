@@ -3,8 +3,8 @@ window.CLINIC = {
   name: "Dr. Disha Jain Dental Clinic",
   phone: "919650647352",
   whatsapp: "919650647352",
-  // Paste the clinic's Google Business Profile link here (Maps > Share > Copy link) so taps open her exact listing. Empty = search by name, address and phone.
-  mapsUrl: "https://share.google/d9TBeavADrDtv2nHe",
+  // Opens Google Maps with directions to the clinic (map + route). Do not use a Business Profile share link here: it opens the listing instead of the map.
+  mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Dr.+Disha+Jain+Dental+Clinic%2C+C-73+Palam+Vyapar+Kendra%2C+Palam+Vihar%2C+Gurugram",
   showBeforeAfter: true,      // set false (or replace assets/before.svg + after.svg with real, consented cases) before ads go live
   gaId: "",                   // Google Analytics 4 ID, e.g. "G-XXXXXXXXXX" (optional)
   adsId: "",                  // Google Ads ID, e.g. "AW-1234567890"; leave empty until the Ads account is ready
