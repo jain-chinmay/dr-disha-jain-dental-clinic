@@ -573,3 +573,54 @@ h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em}
 .cta-row{gap:10px;margin:20px 0}
 .cta-row .btn,.hero .btn{padding:10px 20px}
 .sticky .btn:first-child{animation:none}
+
+/* ===== Type and layout system (last in file; wins over the earlier layered rules) ===== */
+:root{--gap:14px;--sec:44px;--card-r:14px}
+body{font-size:15.5px;line-height:1.6}
+p{margin:0 0 .9em}
+.lead{font-size:1rem;line-height:1.55}
+h1{font-size:clamp(1.75rem,6.4vw,2.9rem);line-height:1.15;letter-spacing:-.02em}
+h2{font-size:clamp(1.375rem,4.6vw,2.1rem);line-height:1.2;letter-spacing:-.015em;margin:0 0 .6em}
+h3{font-size:1.05rem;line-height:1.3}
+.page-hero h1{font-size:clamp(1.75rem,6.4vw,2.9rem)}
+.prose h2{font-size:clamp(1.25rem,3.6vw,1.6rem)}
+.eyebrow{font-size:.72rem;margin:0 0 .7em}
+.chips li,.note,footer,.foot{font-size:.82rem}
+.chips li{padding:5px 12px}
+.bigtype p{font-size:clamp(2rem,9vw,6rem)}
+.stats b{font-size:1.6rem}
+
+/* one container, one rhythm */
+.wrap{max-width:1080px;padding-inline:max(20px,env(safe-area-inset-left,0px))}
+.section,.band{padding-block:var(--sec)}
+.page-hero{padding:28px 0 28px}
+.two{gap:28px;align-items:start}
+.two>.reveal,.two>div{min-width:0}
+.cards,.quotes,.mini-cards,.gallery{gap:var(--gap)}
+.cta-row{margin:18px 0 0}
+
+/* left-aligned text, readable line length */
+.center{text-align:left}.center p{margin-inline:0}.center-row{justify-content:flex-start}
+.glance-line,.all-link{text-align:left}
+.lead,.prose p,.prose li{max-width:62ch}
+.hero-copy p{max-width:56ch}
+
+/* one card style */
+.card,.tcard,.mini-cards div,blockquote,.card.form{border-radius:var(--card-r);padding:18px;box-shadow:none}
+.cards .card:hover,.cards .card.hl{transform:none;box-shadow:none}
+
+/* "Our approach": simple numbered steps */
+.steps{counter-reset:s;padding:0;gap:16px;margin:0}
+.steps::before,.steps::after{display:none}
+.steps li{display:grid;grid-template-columns:28px 1fr;column-gap:12px;align-items:start}
+.steps li::before{counter-increment:s;content:counter(s);position:static;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid var(--coral);color:var(--coral-d);display:grid;place-items:center;font:600 .8rem var(--body);grid-row:1/3}
+.steps b{font-size:1.02rem;line-height:1.3}
+.steps b,.steps span{grid-column:2}
+.steps span{font-size:.94rem}
+
+@media(min-width:821px){
+  body{font-size:16px}
+  :root{--sec:72px}
+  .two{gap:48px}
+  .card,.tcard,.mini-cards div,blockquote,.card.form{padding:22px}
+}
