@@ -682,3 +682,19 @@ blockquote,.side-card,.doc-card,.card.form{border-radius:20px}
   .nav>a{height:auto;min-height:74px}
 }
 @media(max-width:820px){.top .nav>a{justify-content:center;align-items:center;text-align:center}}
+
+/* ===== Mobile hero: declutter ===== */
+@media(max-width:820px){
+  .hero{padding:20px 0 36px}
+  .hero-grid{gap:20px}
+  .hero-copy .cta-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 14px}
+  .hero-copy .cta-row .btn{width:100%;padding:11px 10px;font-size:.88rem;white-space:nowrap}
+  .hero-copy .chips{display:block;margin:0;font-size:.8rem;line-height:1.6;color:var(--muted)}
+  .hero-copy .chips li{display:inline;background:none;border:0;box-shadow:none;padding:0;font-size:inherit;color:inherit}
+  .hero-copy .chips li+li::before{content:" \00b7  "}
+  .hero-copy .chips li::before{background:none}
+  .art{width:min(78%,300px);margin-inline:auto}
+  .art .smile,.art .rings{display:none}
+  .hero-media{margin-top:4px}
+}
+@media(max-width:350px){.top .brand span{display:none}}
