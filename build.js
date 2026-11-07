@@ -128,7 +128,7 @@ ${file === "404.html" ? `<base href="${SITE}">\n<meta name="robots" content="noi
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${SITE}${ogImage}">
-<link rel="stylesheet" href="${b}style.css?v=20261107d">
+<link rel="stylesheet" href="${b}style.css?v=20261107e">
 ${ld}
 </head>
 <body>
@@ -139,8 +139,8 @@ ${body(b)}
 </main>
 ${footer(b)}
 ${sticky}
-<script src="${b}config.js?v=20261107d"></script>
-<script src="${b}main.js?v=20261107d" defer></script>
+<script src="${b}config.js?v=20261107e"></script>
+<script src="${b}main.js?v=20261107e" defer></script>
 </body>
 </html>
 `;

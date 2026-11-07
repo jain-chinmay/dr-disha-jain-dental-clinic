@@ -190,6 +190,7 @@
   var par = Array.prototype.slice.call(d.querySelectorAll("[data-speed]")).filter(function (el) { return !small || el.hasAttribute("data-mobile"); });
   var ticking = false;
   function frame() {
+    if (d.documentElement.classList.contains("menu-open")) { ticking = false; return; }
     var y = window.scrollY, h = window.innerHeight, max = d.documentElement.scrollHeight - h;
     top.classList.toggle("scrolled", y > 8);
     top.classList.toggle("compact", y > 90);
